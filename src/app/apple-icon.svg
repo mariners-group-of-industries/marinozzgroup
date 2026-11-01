@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="marinozzBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b3674" />
+      <stop offset="100%" stop-color="#072147" />
+    </linearGradient>
+    <linearGradient id="marinozzFlame" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#c71b27" />
+      <stop offset="60%" stop-color="#e11d48" />
+      <stop offset="100%" stop-color="#fbbf24" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background squircle -->
+  <rect width="64" height="64" rx="16" fill="url(#marinozzBg)" />
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="none" stroke="#ffffff" stroke-opacity="0.12" stroke-width="2" />
+
+  <!-- Stylized Flame Crown over the M -->
+  <path d="M32 10 C30 14, 27 16, 27 19 C27 21.8 29.2 24 32 24 C34.8 24, 37 21.8, 37 19 C37 16, 34 14, 32 10 Z" fill="url(#marinozzFlame)" />
+  <path d="M32 15 C31 17, 30 18, 30 19.5 C30 20.6 30.9 21.5 32 21.5 C33.1 21.5 34 20.6 34 19.5 C34 18, 33 17, 32 15 Z" fill="#ffffff" opacity="0.8" />
+
+  <!-- Bold Prestigious Letter 'M' in Crisp White with Marinozz Red accents -->
+  <path d="M15 50 L15 26 L23 26 L32 39 L41 26 L49 26 L49 50 L42 50 L42 35 L34.5 46 L29.5 46 L22 35 L22 50 Z" fill="#ffffff" />
+  
+  <!-- Subtle accent bar below M in Marinozz Crimson Red -->
+  <rect x="15" y="53" width="34" height="3" rx="1.5" fill="#c71b27" />
+</svg>

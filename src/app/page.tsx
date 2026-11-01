@@ -24,13 +24,13 @@ export default function HomePage() {
   const recentNews = INITIAL_NEWS.slice(0, 3);
 
   return (
-    <div className="space-y-24 sm:space-y-32 pb-24 overflow-hidden">
+    <div className="space-y-16 sm:space-y-20 pb-20 overflow-hidden">
       {/* 1. Full-Width Editorial Hero Section */}
-      <section className="relative min-h-[75vh] sm:min-h-[80vh] flex items-center bg-white text-gray-900 border-b border-gray-100">
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 z-10 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <section className="relative bg-white text-gray-900 border-b border-gray-100">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-10 sm:pt-6 sm:pb-14 z-10 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             {/* Left Content */}
-            <div className="lg:col-span-7 space-y-8">
+            <div className="lg:col-span-7 space-y-6">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.14] text-[#0b3674]">
                 Nourishing Lives,{" "}
                 <span className="text-[#c71b27]">
@@ -39,10 +39,10 @@ export default function HomePage() {
               </h1>
 
               {/* Two CTA Links */}
-              <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+              <div className="pt-1 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
                 <Link
                   href="/brands"
-                  className="inline-flex items-center justify-center gap-2 px-7 py-4 text-sm font-semibold rounded-xl text-white bg-[#c71b27] hover:bg-[#9e141d] shadow-md hover:shadow-lg transition-all duration-200"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-xl text-white bg-[#c71b27] hover:bg-[#9e141d] shadow-md hover:shadow-lg transition-all duration-200"
                 >
                   <span>Explore Our Brands</span>
                   <ArrowRight className="w-4 h-4" />
@@ -50,14 +50,14 @@ export default function HomePage() {
 
                 <Link
                   href="/franchise"
-                  className="inline-flex items-center justify-center gap-2 px-7 py-4 text-sm font-semibold rounded-xl text-[#0b3674] bg-gray-50 hover:bg-gray-100 border border-gray-200 transition-all duration-200"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-xl text-[#0b3674] bg-gray-50 hover:bg-gray-100 border border-gray-200 transition-all duration-200"
                 >
                   <span>Franchise & Partnerships</span>
                 </Link>
               </div>
 
               {/* Quick Brand Badges */}
-              <div className="pt-8 border-t border-gray-100 grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs text-gray-600 font-medium">
+              <div className="pt-6 border-t border-gray-100 grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs text-gray-600 font-medium">
                 <div className="flex items-center gap-2">
                   <span className="w-2.5 h-2.5 rounded-full bg-red-600" />
                   <span>Fine Dining</span>
@@ -531,10 +531,10 @@ export default function HomePage() {
               Contact Our Head Office
             </Link>
             <a
-              href="tel:+8801711000000"
+              href="tel:+8801335149006"
               className="px-6 py-3 text-sm font-semibold rounded-xl text-gray-800 bg-white hover:bg-gray-50 border border-gray-200 shadow-sm transition-colors"
             >
-              Call Front Desk: +880 1711 000000
+              Call Front Desk: +880 1335-149006
             </a>
           </div>
         </div>

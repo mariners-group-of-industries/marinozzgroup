@@ -164,10 +164,10 @@ export default function NewsPage() {
           </div>
           <div className="flex gap-3">
             <a
-              href="mailto:press@marinozzgroup.com"
+              href="tel:+8801335149006"
               className="px-4 py-2 text-xs font-semibold rounded-lg bg-[#0b3674] text-white hover:bg-[#072147] transition-colors whitespace-nowrap"
             >
-              Contact Press Office
+              Call Press Desk: +880 1335-149006
             </a>
             <Link
               href="/admin"

@@ -4,7 +4,6 @@ import { useState } from "react";
 import {
   MapPin,
   Phone,
-  Mail,
   Clock,
   MessageCircle,
   Building2,
@@ -54,11 +53,7 @@ export default function ContactPage() {
                   <h4 className="font-bold text-sm text-[#0b3674]">General Inquiries & Reception</h4>
                   <div className="flex items-center gap-2">
                     <Phone className="w-4 h-4 text-red-600" />
-                    <span>+880 1711 000000</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Mail className="w-4 h-4 text-red-600" />
-                    <span>info@marinozzgroup.com</span>
+                    <span>+880 1335-149006</span>
                   </div>
                 </div>
 
@@ -66,11 +61,7 @@ export default function ContactPage() {
                   <h4 className="font-bold text-sm text-amber-800">Franchise & Institutional Sales</h4>
                   <div className="flex items-center gap-2">
                     <Phone className="w-4 h-4 text-amber-600" />
-                    <span>+880 1712 111111</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Mail className="w-4 h-4 text-amber-600" />
-                    <span>franchise@marinozzgroup.com</span>
+                    <span>+880 1335-149006</span>
                   </div>
                 </div>
 
@@ -78,7 +69,7 @@ export default function ContactPage() {
                   <h4 className="font-bold text-sm text-[#0b3674]">Marinozz Multicuisine Restaurant Desk</h4>
                   <div className="flex items-center gap-2">
                     <Phone className="w-4 h-4 text-[#0b3674]" />
-                    <span>+880 1711 000000</span>
+                    <span>+880 1335-149006</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Clock className="w-4 h-4 text-gray-400" />
@@ -89,7 +80,7 @@ export default function ContactPage() {
 
               {/* Direct WhatsApp Action Button */}
               <a
-                href="https://wa.me/8801711000000?text=Hello%20Marinozz%20Group,%20I%20have%20an%20inquiry."
+                href="https://wa.me/8801335149006?text=Hello%20Marinozz%20Group,%20I%20have%20an%20inquiry."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 text-xs font-bold rounded-xl text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 transition-colors"

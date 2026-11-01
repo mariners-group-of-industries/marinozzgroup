@@ -28,7 +28,7 @@ export default function WhatsAppFloating() {
 
           <div className="py-3 space-y-2 text-xs">
             <a
-              href="https://wa.me/8801711000000?text=Hello%20Marinozz%20Group,%20I%20would%20like%20to%20inquire%20about%20Marinozz%20Restaurant%20table%20reservation."
+              href="https://wa.me/8801335149006?text=Hello%20Marinozz%20Group,%20I%20would%20like%20to%20inquire%20about%20Marinozz%20Restaurant%20table%20reservation."
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2.5 p-2 rounded-lg bg-emerald-50 hover:bg-emerald-100/70 text-emerald-900 transition-colors"
@@ -41,7 +41,7 @@ export default function WhatsAppFloating() {
             </a>
 
             <a
-              href="https://wa.me/8801712111111?text=Hello%20Marinozz%20Group,%20I%20am%20interested%20in%20Pantoa%20Sweets%20Bakery%20or%20Franchise%20partnership."
+              href="https://wa.me/8801335149006?text=Hello%20Marinozz%20Group,%20I%20am%20interested%20in%20Pantoa%20Sweets%20Bakery%20or%20Franchise%20partnership."
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2.5 p-2 rounded-lg bg-amber-50 hover:bg-amber-100/70 text-amber-900 transition-colors"
@@ -54,13 +54,13 @@ export default function WhatsAppFloating() {
             </a>
 
             <a
-              href="tel:+8801711000000"
+              href="tel:+8801335149006"
               className="flex items-center gap-2.5 p-2 rounded-lg bg-blue-50 hover:bg-blue-100/70 text-blue-900 transition-colors"
             >
               <Phone className="w-4 h-4 text-[#0b3674] flex-shrink-0" />
               <div>
                 <p className="font-semibold text-[#0b3674]">Direct Helpline</p>
-                <p className="text-[11px] text-blue-700">+880 1711 000000</p>
+                <p className="text-[11px] text-blue-700">+880 1335-149006</p>
               </div>
             </a>
           </div>

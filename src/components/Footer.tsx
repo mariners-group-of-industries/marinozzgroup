@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Phone, Mail, MapPin, Clock, ArrowUpRight, ShieldCheck, HeartHandshake } from "lucide-react";
+import { Phone, MapPin, Clock, ArrowUpRight, ShieldCheck, HeartHandshake } from "lucide-react";
 
 export default function Footer() {
   const currentYear = 2026;
@@ -153,14 +153,8 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-red-400 flex-shrink-0" />
-                <a href="tel:+8801711000000" className="hover:text-white">
-                  +880 1711 000000
-                </a>
-              </li>
-              <li className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-red-400 flex-shrink-0" />
-                <a href="mailto:info@marinozzgroup.com" className="hover:text-white">
-                  info@marinozzgroup.com
+                <a href="tel:+8801335149006" className="hover:text-white">
+                  +880 1335-149006
                 </a>
               </li>
               <li className="flex items-center gap-2">

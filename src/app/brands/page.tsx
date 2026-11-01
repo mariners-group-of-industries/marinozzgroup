@@ -305,8 +305,7 @@ export default function BrandsPage() {
                 investor briefings, contact the Marinozz PLC executive office.
               </p>
               <div className="text-xs text-gray-700 space-y-1 pt-1">
-                <p><strong>Email:</strong> plc@marinozzgroup.com</p>
-                <p><strong>Corporate Desk:</strong> +880 2 9888888</p>
+                <p><strong>Corporate Desk:</strong> +880 1335-149006</p>
                 <p><strong>Location:</strong> Mariners Tower, Dhaka</p>
               </div>
               <Link

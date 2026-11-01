@@ -7,7 +7,6 @@ export interface LocationInfo {
   city: string;
   phone: string;
   whatsapp: string;
-  email: string;
   hours: string;
   features: string[];
   mapEmbedUrl: string;
@@ -22,9 +21,8 @@ export const LOCATIONS: LocationInfo[] = [
     type: "Dine-In, Takeaway, Banquet & Private Events",
     address: "Level 4, Mariners Commercial Center, Main Avenue, Commercial District",
     city: "Dhaka, Bangladesh",
-    phone: "+880 1711 000000",
-    whatsapp: "+8801711000000",
-    email: "restaurant@marinozzgroup.com",
+    phone: "+880 1335-149006",
+    whatsapp: "+8801335149006",
     hours: "Open Daily: 12:00 PM – 11:00 PM (Last order 10:30 PM)",
     features: [
       "180+ Seating Capacity",
@@ -45,9 +43,8 @@ export const LOCATIONS: LocationInfo[] = [
     type: "Retail Boutique, Takeaway & Central Kitchen",
     address: "Plot 12, Food Processing & Retail Hub, Mariners Zone",
     city: "Dhaka, Bangladesh",
-    phone: "+880 1712 111111",
-    whatsapp: "+8801712111111",
-    email: "pantoa@marinozzgroup.com",
+    phone: "+880 1335-149006",
+    whatsapp: "+8801335149006",
     hours: "Open Daily: 08:00 AM – 10:30 PM",
     features: [
       "Hygienic Glass-Front Boutique",
@@ -67,9 +64,8 @@ export const LOCATIONS: LocationInfo[] = [
     type: "Executive Board, Franchise Relations & Supply Chain Division",
     address: "Mariners Tower, Corporate Sector, Suite 901-904",
     city: "Dhaka, Bangladesh",
-    phone: "+880 2 9888888",
-    whatsapp: "+8801700000000",
-    email: "info@marinozzgroup.com",
+    phone: "+880 1335-149006",
+    whatsapp: "+8801335149006",
     hours: "Sunday – Thursday: 09:00 AM – 06:00 PM (Corporate Inquiries)",
     features: [
       "Franchise Incubation Center",

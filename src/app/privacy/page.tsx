@@ -67,7 +67,7 @@ export default function PrivacyPage() {
             submitted information, please contact:
           </p>
           <div className="p-4 rounded-xl bg-gray-50 border border-gray-200 text-xs text-gray-700">
-            <p><strong>Email:</strong> privacy@marinozzgroup.com</p>
+            <p><strong>Phone:</strong> +880 1335-149006</p>
             <p><strong>Corporate Office:</strong> Mariners Tower, Suite 901-904, Dhaka, Bangladesh</p>
           </div>
         </section>

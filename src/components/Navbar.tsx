@@ -111,11 +111,11 @@ export default function Navbar() {
               Franchise Opportunities 2026 →
             </Link>
             <a
-              href="tel:+8801711000000"
+              href="tel:+8801335149006"
               className="flex items-center gap-1 text-blue-100 hover:text-white transition-colors"
             >
               <Phone className="w-3 h-3 text-red-400" />
-              +880 1711 000000
+              +880 1335-149006
             </a>
             <Link
               href="/admin"
@@ -322,7 +322,7 @@ export default function Navbar() {
                   Contact Our Corporate Office
                 </Link>
                 <div className="flex justify-between items-center text-xs text-gray-500 pt-2 px-1">
-                  <span>Helpline: +880 1711 000000</span>
+                  <span>Helpline: +880 1335-149006</span>
                   <Link href="/admin" className="text-blue-700 underline">
                     Admin CMS
                   </Link>

@@ -536,19 +536,19 @@ export default function AdminPage() {
                 {
                   title: "Marinozz Multicuisine Restaurant",
                   address: "Level 4, Mariners Commercial Center, Main Avenue, Dhaka",
-                  phone: "+880 1711 000000",
+                  phone: "+880 1335-149006",
                   hours: "12:00 PM - 11:00 PM Daily",
                 },
                 {
                   title: "Pantoa Sweets & Bakery Flagship",
                   address: "Plot 12, Food Processing & Retail Hub, Mariners Zone, Dhaka",
-                  phone: "+880 1712 111111",
+                  phone: "+880 1335-149006",
                   hours: "08:00 AM - 10:30 PM Daily",
                 },
                 {
                   title: "Marinozz Group Corporate HQ",
                   address: "Mariners Tower, Corporate Sector, Suite 901-904, Dhaka",
-                  phone: "+880 2 9888888",
+                  phone: "+880 1335-149006",
                   hours: "Sun - Thu, 09:00 AM - 06:00 PM",
                 },
               ].map((loc, idx) => (

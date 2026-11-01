@@ -34,28 +34,17 @@ export default function HomePage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-14 sm:pt-8 sm:pb-20 z-10 w-full">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left Content */}
-            <div className="lg:col-span-7 space-y-7">
-              {/* Luxury Kicker */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wide bg-red-50 text-[#c71b27] border border-red-200/70 shadow-xs">
-                <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-                <span>Premier Food, Restaurant &amp; Confectionery Ecosystem</span>
-              </div>
-
+            <div className="lg:col-span-7 space-y-8">
               {/* Main Headline */}
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.12] text-[#0b3674]">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.14] text-[#0b3674]">
                 Nourishing Lives,{" "}
                 <span className="block mt-1 text-transparent bg-clip-text bg-gradient-to-r from-[#c71b27] via-rose-600 to-[#9e141d]">
                   Elevating Hospitality
                 </span>
               </h1>
 
-              {/* Refined Value Statement */}
-              <p className="text-base sm:text-lg text-gray-600 max-w-xl leading-relaxed font-normal">
-                Curating world-class multi-cuisine fine dining, authentic confectionery craftsmanship, and industrial food manufacturing under one unified corporate standard of purity and trust.
-              </p>
-
               {/* Two CTA Links */}
-              <div className="pt-1 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+              <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
                 <Link
                   href="/brands"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 text-sm font-bold rounded-xl text-white bg-gradient-to-r from-[#c71b27] to-[#9e141d] hover:from-[#9e141d] hover:to-[#7f0f16] shadow-lg shadow-red-900/15 hover:shadow-xl hover:shadow-red-900/25 hover:-translate-y-0.5 transition-all duration-200"

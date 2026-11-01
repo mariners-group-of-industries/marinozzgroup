@@ -118,9 +118,9 @@ export default function BrandsPage() {
                 <span className="text-xs text-gray-500">• Sweets & European Bakery</span>
               </div>
 
-              <div className="relative h-14 w-56">
+              <div className="relative h-14 w-56 rounded-xl overflow-hidden shadow-xs border border-red-100">
                 <Image
-                  src="/logos/marinozz-confectionery.png"
+                  src="/logos/pantoa-sweets.jpg"
                   alt="Pantoa Sweets & Bakery"
                   fill
                   className="object-contain object-left"

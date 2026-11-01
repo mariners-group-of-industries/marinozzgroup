@@ -56,29 +56,25 @@ export default function Navbar() {
       title: "Marinozz Restaurant",
       desc: "Multicuisine Fine Dining & Family Banquets",
       href: "/marinozz-restaurant",
-      icon: Utensils,
-      color: "text-red-700 bg-red-50",
+      logo: "/logos/marinozz-restaurant.png",
     },
     {
       title: "Pantoa Sweets & Bakery",
       desc: "Authentic Bengali Sweets & European Bakery",
       href: "/pantoa-sweets-bakery",
-      icon: Cake,
-      color: "text-amber-700 bg-amber-50",
+      logo: "/logos/pantoa-sweets.jpg",
     },
     {
       title: "Marinozz Confectionery PLC",
       desc: "Packaged Commercial Baking & FMCG Goods",
       href: "/brands#confectionery",
-      icon: Factory,
-      color: "text-red-800 bg-red-50",
+      logo: "/logos/marinozz-confectionery.png",
     },
     {
       title: "Marinozz PLC",
       desc: "Supply Chain & Corporate Management Backbone",
       href: "/brands#marinozz-plc",
-      icon: Building2,
-      color: "text-blue-900 bg-blue-50",
+      logo: "/logos/marinozz-plc.png",
     },
   ];
 
@@ -191,30 +187,30 @@ export default function Navbar() {
                                 Marinozz Brand Ecosystem
                               </p>
                             </div>
-                            {brandItems.map((item) => {
-                              const Icon = item.icon;
-                              return (
-                                <Link
-                                  key={item.title}
-                                  href={item.href}
-                                  className="flex items-start gap-3 p-2.5 rounded-lg hover:bg-gray-50 transition-colors group/item"
-                                >
-                                  <div
-                                    className={`p-2 rounded-lg ${item.color} mt-0.5 group-hover/item:scale-105 transition-transform`}
-                                  >
-                                    <Icon className="w-4 h-4" />
+                            {brandItems.map((item) => (
+                              <Link
+                                key={item.title}
+                                href={item.href}
+                                className="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 transition-colors group/item"
+                              >
+                                <div className="relative w-12 h-10 rounded-lg border border-gray-100 bg-white p-1 flex-shrink-0 flex items-center justify-center shadow-xs overflow-hidden group-hover/item:border-gray-200 group-hover/item:scale-105 transition-transform">
+                                  <Image
+                                    src={item.logo}
+                                    alt={item.title}
+                                    fill
+                                    className="object-contain p-0.5"
+                                  />
+                                </div>
+                                <div className="min-w-0">
+                                  <div className="text-sm font-semibold text-gray-900 group-hover/item:text-[#c71b27] transition-colors leading-tight">
+                                    {item.title}
                                   </div>
-                                  <div>
-                                    <div className="text-sm font-medium text-gray-900 group-hover/item:text-[#c71b27] transition-colors flex items-center gap-1">
-                                      {item.title}
-                                    </div>
-                                    <div className="text-xs text-gray-500 line-clamp-1">
-                                      {item.desc}
-                                    </div>
+                                  <div className="text-[11px] text-gray-500 truncate mt-0.5">
+                                    {item.desc}
                                   </div>
-                                </Link>
-                              );
-                            })}
+                                </div>
+                              </Link>
+                            ))}
                             <div className="pt-2 border-t border-gray-100 px-3 py-1.5 flex justify-between items-center text-xs">
                               <Link
                                 href="/brands"
@@ -299,14 +295,22 @@ export default function Navbar() {
                   </Link>
 
                   {link.hasDropdown && (
-                    <div className="pl-4 pr-2 py-1 my-1 space-y-1 border-l-2 border-red-100 ml-3">
+                    <div className="pl-3 pr-2 py-1 my-1 space-y-1.5 border-l-2 border-red-100 ml-3">
                       {brandItems.map((item) => (
                         <Link
                           key={item.title}
                           href={item.href}
-                          className="block py-1.5 text-xs text-gray-600 hover:text-[#c71b27]"
+                          className="flex items-center gap-2.5 py-1 text-xs text-gray-700 hover:text-[#c71b27]"
                         >
-                          • {item.title}
+                          <div className="relative w-7 h-6 rounded border border-gray-100 bg-white flex-shrink-0 overflow-hidden">
+                            <Image
+                              src={item.logo}
+                              alt={item.title}
+                              fill
+                              className="object-contain"
+                            />
+                          </div>
+                          <span>{item.title}</span>
                         </Link>
                       ))}
                     </div>

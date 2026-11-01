@@ -46,7 +46,7 @@ export const BRANDS: Brand[] = [
     id: "pantoa-sweets-bakery",
     name: "Pantoa Sweets & Bakery",
     shortName: "Pantoa Sweets",
-    logo: "/logos/marinozz-confectionery.png",
+    logo: "/logos/pantoa-sweets.jpg",
     tagline: "Timeless Bengali Confectionery Crafted with Modern Hygienic Mastery",
     category: "Artisanal Sweets, Bakery & Confectionery",
     href: "/pantoa-sweets-bakery",

@@ -68,7 +68,7 @@ export default function PrivacyPage() {
           </p>
           <div className="p-4 rounded-xl bg-gray-50 border border-gray-200 text-xs text-gray-700">
             <p><strong>Phone:</strong> +880 1335-149006</p>
-            <p><strong>Corporate Office:</strong> Mariners Tower, Suite 901-904, Dhaka, Bangladesh</p>
+            <p><strong>Corporate Office:</strong> MG SAM Center, 12 Mohakhali C/A, Dhaka-1212</p>
           </div>
         </section>
       </div>

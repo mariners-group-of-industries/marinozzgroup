@@ -306,7 +306,7 @@ export default function BrandsPage() {
               </p>
               <div className="text-xs text-gray-700 space-y-1 pt-1">
                 <p><strong>Corporate Desk:</strong> +880 1335-149006</p>
-                <p><strong>Location:</strong> Mariners Tower, Dhaka</p>
+                <p><strong>Location:</strong> MG SAM Center, 12 Mohakhali C/A, Dhaka-1212</p>
               </div>
               <Link
                 href="/contact"

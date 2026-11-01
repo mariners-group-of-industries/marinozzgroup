@@ -149,7 +149,7 @@ export default function Footer() {
             <ul className="space-y-3 text-xs text-blue-100/80">
               <li className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-red-400 flex-shrink-0 mt-0.5" />
-                <span>Mariners Tower, Corporate Sector, Suite 901-904, Dhaka, Bangladesh</span>
+                <span>MG SAM Center, 12 Mohakhali C/A, Dhaka-1212</span>
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-red-400 flex-shrink-0" />

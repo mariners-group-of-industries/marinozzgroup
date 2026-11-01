@@ -107,26 +107,7 @@ export default function HomePage() {
                     </span>
                   </div>
 
-                  {/* Floating Confectionery Highlight Card (Overlapping) */}
-                  <div className="absolute top-16 right-4 z-20 max-w-[190px] p-2.5 rounded-2xl bg-white/95 backdrop-blur-md shadow-xl border border-white/60 animate-in fade-in duration-500 hidden sm:block">
-                    <div className="flex items-center gap-2">
-                      <div className="relative w-9 h-9 rounded-lg overflow-hidden border border-red-100 flex-shrink-0 bg-red-50">
-                        <Image
-                          src="/logos/pantoa-sweets.jpg"
-                          alt="Pantoa Sweets"
-                          fill
-                          className="object-contain"
-                        />
-                      </div>
-                      <div className="min-w-0">
-                        <p className="text-[10px] font-extrabold text-[#c71b27] uppercase leading-none">
-                          Pantoa Sweets
-                        </p>
-                        <p className="text-[10px] text-gray-500 truncate mt-0.5">Pure Cow Milk</p>
-                        <div className="text-[10px] text-amber-500 font-bold">★★★★★ 4.9</div>
-                      </div>
-                    </div>
-                  </div>
+
 
                   {/* Bottom Caption Card */}
                   <div className="absolute bottom-5 left-5 right-5 p-4 rounded-2xl bg-white/95 backdrop-blur-md text-gray-900 shadow-xl border border-white/60">

@@ -26,23 +26,39 @@ export default function HomePage() {
   return (
     <div className="space-y-16 sm:space-y-20 pb-20 overflow-hidden">
       {/* 1. Full-Width Editorial Hero Section */}
-      <section className="relative bg-white text-gray-900 border-b border-gray-100">
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-10 sm:pt-6 sm:pb-14 z-10 w-full">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      <section className="relative bg-gradient-to-b from-white via-[#faf9f6]/60 to-white text-gray-900 border-b border-gray-100 overflow-hidden">
+        {/* Subtle ambient luxury glows */}
+        <div className="absolute top-0 right-1/4 w-96 h-96 bg-red-500/5 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute bottom-0 left-10 w-80 h-80 bg-blue-500/5 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-14 sm:pt-8 sm:pb-20 z-10 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left Content */}
-            <div className="lg:col-span-7 space-y-6">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.14] text-[#0b3674]">
+            <div className="lg:col-span-7 space-y-7">
+              {/* Luxury Kicker */}
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold tracking-wide bg-red-50 text-[#c71b27] border border-red-200/70 shadow-xs">
+                <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+                <span>Premier Food, Restaurant &amp; Confectionery Ecosystem</span>
+              </div>
+
+              {/* Main Headline */}
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.12] text-[#0b3674]">
                 Nourishing Lives,{" "}
-                <span className="text-[#c71b27]">
+                <span className="block mt-1 text-transparent bg-clip-text bg-gradient-to-r from-[#c71b27] via-rose-600 to-[#9e141d]">
                   Elevating Hospitality
                 </span>
               </h1>
+
+              {/* Refined Value Statement */}
+              <p className="text-base sm:text-lg text-gray-600 max-w-xl leading-relaxed font-normal">
+                Curating world-class multi-cuisine fine dining, authentic confectionery craftsmanship, and industrial food manufacturing under one unified corporate standard of purity and trust.
+              </p>
 
               {/* Two CTA Links */}
               <div className="pt-1 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
                 <Link
                   href="/brands"
-                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-xl text-white bg-[#c71b27] hover:bg-[#9e141d] shadow-md hover:shadow-lg transition-all duration-200"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 text-sm font-bold rounded-xl text-white bg-gradient-to-r from-[#c71b27] to-[#9e141d] hover:from-[#9e141d] hover:to-[#7f0f16] shadow-lg shadow-red-900/15 hover:shadow-xl hover:shadow-red-900/25 hover:-translate-y-0.5 transition-all duration-200"
                 >
                   <span>Explore Our Brands</span>
                   <ArrowRight className="w-4 h-4" />
@@ -50,63 +66,99 @@ export default function HomePage() {
 
                 <Link
                   href="/franchise"
-                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold rounded-xl text-[#0b3674] bg-gray-50 hover:bg-gray-100 border border-gray-200 transition-all duration-200"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-4 text-sm font-bold rounded-xl text-[#0b3674] bg-white hover:bg-gray-50 border-2 border-gray-200 shadow-xs hover:border-[#0b3674]/30 hover:-translate-y-0.5 transition-all duration-200"
                 >
-                  <span>Franchise & Partnerships</span>
+                  <span>Franchise &amp; Partnerships</span>
                 </Link>
               </div>
 
-              {/* Quick Brand Badges */}
-              <div className="pt-6 border-t border-gray-100 grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs text-gray-600 font-medium">
-                <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-red-600" />
+              {/* Quick Trust Pillars & Badges */}
+              <div className="pt-6 border-t border-gray-200/80 grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs font-semibold text-gray-700">
+                <div className="flex items-center gap-2.5 p-2 rounded-xl bg-white border border-gray-100 shadow-xs">
+                  <span className="w-2.5 h-2.5 rounded-full bg-red-600 flex-shrink-0" />
                   <span>Fine Dining</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-amber-500" />
-                  <span>Sweets & Bakery</span>
+                <div className="flex items-center gap-2.5 p-2 rounded-xl bg-white border border-gray-100 shadow-xs">
+                  <span className="w-2.5 h-2.5 rounded-full bg-amber-500 flex-shrink-0" />
+                  <span>Sweets &amp; Bakery</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-red-700" />
+                <div className="flex items-center gap-2.5 p-2 rounded-xl bg-white border border-gray-100 shadow-xs">
+                  <span className="w-2.5 h-2.5 rounded-full bg-red-800 flex-shrink-0" />
                   <span>FMCG Production</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#0b3674]" />
+                <div className="flex items-center gap-2.5 p-2 rounded-xl bg-white border border-gray-100 shadow-xs">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#0b3674] flex-shrink-0" />
                   <span>Supply Backbone</span>
                 </div>
               </div>
             </div>
 
-            {/* Right Editorial Image Showcase */}
+            {/* Right Multi-Layered Editorial Showcase */}
             <div className="lg:col-span-5 relative">
               <div className="relative mx-auto max-w-md lg:max-w-none">
-                <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-100 aspect-[4/5] bg-gray-100">
+                {/* Decorative glowing gradient aura */}
+                <div className="absolute -inset-3 rounded-3xl bg-gradient-to-tr from-[#c71b27]/15 via-amber-400/10 to-[#0b3674]/15 blur-xl opacity-75" />
+
+                {/* Main Hero Media Frame */}
+                <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-gray-200/80 aspect-[4/5] bg-gray-900 group">
                   <Image
                     src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80"
                     alt="Premium Multicuisine Dining at Marinozz Restaurant"
                     fill
                     priority
-                    className="object-cover hover:scale-105 transition-transform duration-700"
+                    className="object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
 
-                  {/* Floating Caption Card */}
-                  <div className="absolute bottom-5 left-5 right-5 p-4 rounded-xl bg-white/95 backdrop-blur-md text-gray-900 shadow-lg border border-gray-100">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <p className="text-[10px] font-bold uppercase tracking-wider text-[#c71b27]">
-                          Flagship Hospitality
+                  {/* Floating Top Badge */}
+                  <div className="absolute top-4 left-4 z-20">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[11px] font-bold bg-white/95 backdrop-blur-md text-[#0b3674] shadow-md border border-white/40">
+                      <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                      100% Halal &amp; ISO Aligned
+                    </span>
+                  </div>
+
+                  {/* Floating Confectionery Highlight Card (Overlapping) */}
+                  <div className="absolute top-16 right-4 z-20 max-w-[190px] p-2.5 rounded-2xl bg-white/95 backdrop-blur-md shadow-xl border border-white/60 animate-in fade-in duration-500 hidden sm:block">
+                    <div className="flex items-center gap-2">
+                      <div className="relative w-9 h-9 rounded-lg overflow-hidden border border-red-100 flex-shrink-0 bg-red-50">
+                        <Image
+                          src="/logos/pantoa-sweets.jpg"
+                          alt="Pantoa Sweets"
+                          fill
+                          className="object-contain"
+                        />
+                      </div>
+                      <div className="min-w-0">
+                        <p className="text-[10px] font-extrabold text-[#c71b27] uppercase leading-none">
+                          Pantoa Sweets
                         </p>
-                        <h3 className="text-sm font-bold text-gray-900">
+                        <p className="text-[10px] text-gray-500 truncate mt-0.5">Pure Cow Milk</p>
+                        <div className="text-[10px] text-amber-500 font-bold">★★★★★ 4.9</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Bottom Caption Card */}
+                  <div className="absolute bottom-5 left-5 right-5 p-4 rounded-2xl bg-white/95 backdrop-blur-md text-gray-900 shadow-xl border border-white/60">
+                    <div className="flex items-center justify-between gap-3">
+                      <div>
+                        <div className="flex items-center gap-1.5">
+                          <span className="w-2 h-2 rounded-full bg-red-600 animate-pulse" />
+                          <p className="text-[10px] font-extrabold uppercase tracking-wider text-[#c71b27]">
+                            Flagship Dining Destination
+                          </p>
+                        </div>
+                        <h3 className="text-sm font-extrabold text-gray-900 mt-0.5">
                           Marinozz Multicuisine Restaurant
                         </h3>
                         <p className="text-[11px] text-gray-500">
-                          World-class Continental, Pan-Asian & Mughlai
+                          MG SAM Center, Mohakhali, Dhaka
                         </p>
                       </div>
                       <Link
                         href="/marinozz-restaurant"
-                        className="p-2 rounded-lg bg-red-50 text-[#c71b27] hover:bg-[#c71b27] hover:text-white transition-colors"
+                        className="p-2.5 rounded-xl bg-red-50 text-[#c71b27] hover:bg-[#c71b27] hover:text-white shadow-xs transition-colors flex-shrink-0"
                         aria-label="View Marinozz Restaurant"
                       >
                         <ArrowRight className="w-4 h-4" />

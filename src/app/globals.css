@@ -2,25 +2,85 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #181c24;
+
+  /* Marinozz Signature Color Identity (Derived from official brand logos) */
+  --brand-red: #c71b27;
+  --brand-red-dark: #9e141d;
+  --brand-red-light: #fef2f2;
+  --brand-red-glow: rgba(199, 27, 39, 0.12);
+
+  --brand-blue: #0b3674;
+  --brand-blue-dark: #072147;
+  --brand-blue-light: #eff6ff;
+  --brand-blue-glow: rgba(11, 54, 116, 0.12);
+
+  --brand-cream: #faf8f5;
+  --brand-surface: #f7f6f2;
+  --brand-gold: #c59b27;
+  --brand-gold-light: #fef9c3;
+
+  --neutral-charcoal: #181c24;
+  --neutral-slate: #475569;
+  --neutral-muted: #64748b;
+  --neutral-border: #e2e8f0;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-brand-red: var(--brand-red);
+  --color-brand-red-dark: var(--brand-red-dark);
+  --color-brand-red-light: var(--brand-red-light);
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-blue-dark: var(--brand-blue-dark);
+  --color-brand-blue-light: var(--brand-blue-light);
+  --color-brand-cream: var(--brand-cream);
+  --color-brand-surface: var(--brand-surface);
+  --color-brand-gold: var(--brand-gold);
+  --color-neutral-charcoal: var(--neutral-charcoal);
+  --color-neutral-slate: var(--neutral-slate);
+  --color-neutral-muted: var(--neutral-muted);
+  --color-neutral-border: var(--neutral-border);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Modern Form Validation Feedback according to Modern Web Guidance */
+input:user-invalid,
+textarea:user-invalid,
+select:user-invalid {
+  border-color: #dc2626 !important;
+  background-color: #fef2f2 !important;
+}
+
+input:user-valid:not(:placeholder-shown),
+textarea:user-valid:not(:placeholder-shown) {
+  border-color: #16a34a;
+}
+
+/* Elegant custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
 }

@@ -9,184 +9,233 @@ import {
   ShieldCheck,
   CheckCircle2,
   ArrowRight,
-  Award,
-  Layers,
+  Sparkles,
+  MapPin,
+  Phone,
 } from "lucide-react";
 import PageHeader from "@/components/PageHeader";
-import { ECOSYSTEM_PILLARS, CERTIFICATIONS } from "@/data/ecosystem";
 
 export const metadata = {
   title: "Our Business Ecosystem | Marinozz Group Integrated Food Infrastructure",
   description:
-    "Discover Marinozz Group's integrated farm-to-table food ecosystem, centralized manufacturing, cold-chain logistics, and turnkey franchise governance.",
+    "Explore Marinozz Group's farm-to-table food ecosystem, centralized manufacturing, cold-chain logistics, and turnkey franchise governance.",
 };
 
-export default function EcosystemPage() {
-  const iconMap: Record<string, any> = {
-    Wheat,
-    Factory,
-    Truck,
-    Store,
-    Handshake,
-  };
+const ECOSYSTEM_CARDS = [
+  {
+    number: "01",
+    title: "Direct Dairy & Farm Procurement",
+    subtitle: "Ethical Sourcing",
+    tag: "100% Pure Milk",
+    image:
+      "https://images.unsplash.com/photo-1488459716781-31db52582fe9?auto=format&fit=crop&w=1000&q=80",
+    badges: ["Pure Cow Dairy", "Direct Farm Contracts", "Zero Adulteration"],
+    href: "/pantoa-sweets-bakery",
+  },
+  {
+    number: "02",
+    title: "Central Hygienic Kitchens",
+    subtitle: "Calibrated Science",
+    tag: "HACCP Aligned",
+    image:
+      "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1000&q=80",
+    badges: ["Digital Thermostats", "Daily Lab Testing", "Master Chef SOPs"],
+    href: "/about",
+  },
+  {
+    number: "03",
+    title: "Cold-Chain Fleet Logistics",
+    subtitle: "Fresh Transit",
+    tag: "Daily Dispatch",
+    image:
+      "https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=1000&q=80",
+    badges: ["Refrigerated Fleet", "Zero Break Chain", "Same-Day Delivery"],
+    href: "/ecosystem",
+  },
+  {
+    number: "04",
+    title: "Multichannel Dining & Retail",
+    subtitle: "Customer Touchpoints",
+    tag: "180+ Seating & Outlets",
+    image:
+      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=80",
+    badges: ["Fine Dining Hall", "Sweet Boutiques", "Express Kiosks"],
+    href: "/brands",
+  },
+  {
+    number: "05",
+    title: "Franchise Governance & POS",
+    subtitle: "Turnkey Success",
+    tag: "Turnkey Models",
+    image:
+      "https://images.unsplash.com/photo-1556740738-b6a63e27c4df?auto=format&fit=crop&w=1000&q=80",
+    badges: ["Real-time POS", "Staff Academy", "Guaranteed Margins"],
+    href: "/franchise",
+  },
+];
 
+export default function EcosystemPage() {
   return (
-    <div className="space-y-20 pb-24">
+    <div className="space-y-16 sm:space-y-24 pb-24 overflow-hidden">
       <PageHeader
-        badge="Supply Chain & Synergy"
         title="Our Business Ecosystem"
-        subtitle="A vertically integrated food and hospitality architecture uniting ethical sourcing, centralized food science, cold-chain distribution, and multichannel retail."
-        breadcrumb={[{ label: "Business Ecosystem" }]}
+        subtitle="A vertically integrated food architecture uniting farm procurement, central food science, cold chain, and retail."
       />
 
-      {/* Intro Overview */}
+      {/* 1. Visual 5-Stage Value Journey (Photo Showcase) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-6 space-y-6">
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#c71b27] bg-red-50 px-3 py-1 rounded-full border border-red-200">
-              Vertical Integration
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+          <div>
+            <span className="text-xs font-bold uppercase tracking-wider text-[#0b3674] bg-blue-50 px-3 py-1 rounded-full">
+              Full Spectrum Infrastructure
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0b3674] tracking-tight">
-              Why an Integrated Ecosystem Matters
+            <h2 className="text-2xl sm:text-3xl font-black text-[#0b3674] tracking-tight mt-2">
+              The 5 Pillars of Marinozz Synergy
             </h2>
-            <p className="text-base text-gray-700 leading-relaxed">
-              In food and hospitality, quality cannot be inspected into a dish at the final second—it
-              must be built into the entire journey. Many restaurant and sweet vendors struggle with
-              erratic raw ingredient quality, volatile wholesale pricing, and food safety risks.
-            </p>
-            <p className="text-sm text-gray-600 leading-relaxed">
-              Marinozz Group, backed by <strong>Mariners Group</strong>, operates an end-to-end
-              ecosystem where every link is controlled, standardized, and monitored. This ensures
-              traceability from agricultural milk farms to the final dining table, protecting guest
-              health and maximizing franchise business predictability.
-            </p>
+          </div>
+          <div className="flex items-center gap-2 text-xs font-bold text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+            <ShieldCheck className="w-4 h-4 text-emerald-600" />
+            <span>Farm-to-Table Quality Control</span>
+          </div>
+        </div>
 
-            <div className="pt-2 flex flex-wrap gap-4">
+        <div className="space-y-8">
+          {ECOSYSTEM_CARDS.map((pillar) => (
+            <div
+              key={pillar.number}
+              className="group bg-white rounded-3xl border border-gray-200/80 shadow-md hover:shadow-2xl transition-all overflow-hidden grid grid-cols-1 lg:grid-cols-12 gap-6 items-center p-6 sm:p-8"
+            >
+              {/* Photo */}
+              <div className="lg:col-span-5 relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-[4/3] rounded-2xl overflow-hidden bg-gray-900 shadow-sm">
+                <Image
+                  src={pillar.image}
+                  alt={pillar.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                <div className="absolute top-3 left-3">
+                  <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md text-[#0b3674] shadow-sm">
+                    {pillar.tag}
+                  </span>
+                </div>
+              </div>
+
+              {/* Details & Badges */}
+              <div className="lg:col-span-7 space-y-4">
+                <div className="flex items-center gap-2 text-xs font-bold text-[#c71b27]">
+                  <span>STAGE {pillar.number}</span>
+                  <span className="text-gray-300">•</span>
+                  <span className="text-gray-500 font-semibold">{pillar.subtitle}</span>
+                </div>
+
+                <h3 className="text-2xl sm:text-3xl font-black text-[#0b3674] tracking-tight">
+                  {pillar.title}
+                </h3>
+
+                <div className="flex flex-wrap gap-2 pt-1">
+                  {pillar.badges.map((badge, bIdx) => (
+                    <span
+                      key={bIdx}
+                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl text-xs font-bold bg-[#f7f6f2] text-gray-800 border border-gray-200"
+                    >
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                      {badge}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="pt-3">
+                  <Link
+                    href={pillar.href}
+                    className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-bold rounded-xl text-white bg-[#0b3674] hover:bg-[#072147] shadow transition-colors"
+                  >
+                    <span>Explore Component</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 2. Visual Franchise & Expansion Synergy CTA */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative rounded-3xl bg-gradient-to-r from-[#0b3674] via-[#072147] to-[#0b3674] text-white p-8 sm:p-12 overflow-hidden shadow-2xl">
+          <div className="absolute top-0 right-0 w-96 h-96 bg-red-600/10 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+            <div className="space-y-3 max-w-2xl">
+              <span className="text-xs font-bold uppercase tracking-wider text-amber-300 bg-white/10 px-3 py-1 rounded-full border border-white/20">
+                Partner with the Ecosystem
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-black tracking-tight text-white leading-tight">
+                Turnkey Expansion Opportunities
+              </h2>
+              <div className="flex flex-wrap gap-4 pt-2 text-xs font-semibold text-blue-200">
+                <span className="flex items-center gap-1.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                  Zero Adulteration Guarantee
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                  Daily Refrigerated Supply
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                  Comprehensive Training Academy
+                </span>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row lg:flex-col gap-3 flex-shrink-0">
               <Link
                 href="/franchise"
-                className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-semibold rounded-lg bg-[#0b3674] text-white hover:bg-[#072147] transition-colors"
+                className="inline-flex items-center justify-center gap-2 px-6 py-4 text-xs font-bold rounded-xl text-white bg-[#c71b27] hover:bg-[#9e141d] shadow-lg transition-all"
               >
-                <span>Partner in Our Ecosystem</span>
-                <ArrowRight className="w-3.5 h-3.5" />
+                <span>Franchise Form</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href="/brands"
+                className="inline-flex items-center justify-center px-6 py-4 text-xs font-bold rounded-xl text-white bg-white/10 hover:bg-white/20 border border-white/20 transition-all text-center"
+              >
+                <span>View All 4 Brands</span>
               </Link>
             </div>
           </div>
-
-          <div className="lg:col-span-6">
-            <div className="bg-[#f7f6f2] p-8 rounded-3xl border border-gray-200 shadow-sm space-y-4">
-              <div className="flex items-center gap-2 text-xs font-bold text-[#0b3674] uppercase tracking-wide">
-                <Layers className="w-4 h-4 text-red-600" />
-                <span>The Marinozz Value Loop</span>
-              </div>
-              <div className="space-y-3">
-                {[
-                  { step: "1", title: "Direct Farm Procurement", desc: "Pure cow milk & natural spices" },
-                  { step: "2", title: "Central Kitchen Standardization", desc: "Calibrated recipe execution" },
-                  { step: "3", title: "Temperature Controlled Fleet", desc: "Zero break cold distribution" },
-                  { step: "4", title: "Multichannel Dining & Retail", desc: "Restaurants, boutiques & kiosks" },
-                  { step: "5", title: "Franchise & POS Governance", desc: "Turnkey operational profitability" },
-                ].map((item, idx) => (
-                  <div
-                    key={idx}
-                    className="flex items-start gap-3 p-3 bg-white rounded-xl border border-gray-100 shadow-xs"
-                  >
-                    <span className="w-6 h-6 rounded-full bg-blue-50 text-[#0b3674] font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">
-                      {item.step}
-                    </span>
-                    <div>
-                      <h4 className="text-xs font-bold text-gray-900">{item.title}</h4>
-                      <p className="text-[11px] text-gray-500">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
-      {/* The 5 Ecosystem Pillars */}
-      <section className="bg-[#f7f6f2] py-20 border-y border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#0b3674] bg-blue-50 px-3 py-1 rounded-full">
-              Infrastructure Blueprint
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0b3674] tracking-tight mt-3">
-              The 5 Pillars of Our Ecosystem
-            </h2>
-            <p className="text-sm text-gray-600 mt-2">
-              From raw procurement to retail dining, discover how our entities cooperate seamlessly.
+      {/* 3. Corporate Contact Strip */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-[#f7f6f2] rounded-3xl p-8 border border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="space-y-1 text-center sm:text-left">
+            <h3 className="text-xl font-black text-[#0b3674]">
+              Marinozz Group Supply &amp; Logistics Hub
+            </h3>
+            <p className="text-xs font-semibold text-gray-600 flex items-center justify-center sm:justify-start gap-1.5">
+              <MapPin className="w-4 h-4 text-red-600 flex-shrink-0" />
+              <span>MG SAM Center, 12 Mohakhali C/A, Dhaka-1212</span>
             </p>
           </div>
 
-          <div className="space-y-8">
-            {ECOSYSTEM_PILLARS.map((pillar) => {
-              const Icon = iconMap[pillar.icon] || Factory;
-              return (
-                <div
-                  key={pillar.number}
-                  className="bg-white p-6 sm:p-10 rounded-3xl border border-gray-200/80 shadow-sm flex flex-col lg:flex-row lg:items-center justify-between gap-8 hover:shadow-md transition-shadow"
-                >
-                  <div className="flex items-start gap-5 max-w-2xl">
-                    <div className="p-4 rounded-2xl bg-blue-50 text-[#0b3674] flex-shrink-0">
-                      <Icon className="w-7 h-7" />
-                    </div>
-                    <div className="space-y-2">
-                      <div className="flex items-center gap-2">
-                        <span className="text-xs font-black text-[#c71b27]">PILLAR {pillar.number}</span>
-                        <span className="text-gray-300">•</span>
-                        <span className="text-xs text-gray-500 font-medium">{pillar.subtitle}</span>
-                      </div>
-                      <h3 className="text-xl font-bold text-gray-900">{pillar.title}</h3>
-                      <p className="text-sm text-gray-600 leading-relaxed">{pillar.description}</p>
-                    </div>
-                  </div>
-
-                  <div className="flex flex-wrap gap-2 lg:flex-col lg:items-end">
-                    {pillar.tags.map((tag, tagIdx) => (
-                      <span
-                        key={tagIdx}
-                        className="px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-700 whitespace-nowrap"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Certifications & Food Safety */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-14">
-          <span className="text-xs font-semibold uppercase tracking-wider text-[#c71b27] bg-red-50 px-3 py-1 rounded-full border border-red-200">
-            Quality Assurance
-          </span>
-          <h2 className="text-3xl font-extrabold text-[#0b3674] tracking-tight mt-3">
-            Standards & Certifications
-          </h2>
-          <p className="text-sm text-gray-600 mt-2">
-            Independent, international and domestic food regulatory benchmarks observed across the group.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {CERTIFICATIONS.map((cert, idx) => (
-            <div
-              key={idx}
-              className="p-6 rounded-2xl bg-white border border-gray-100 shadow-sm space-y-3"
+          <div className="flex items-center gap-3">
+            <a
+              href="tel:+8801335149006"
+              className="inline-flex items-center gap-1.5 px-5 py-3 text-xs font-bold rounded-xl text-gray-900 bg-white border border-gray-200 shadow-xs hover:bg-gray-50 transition-colors"
             >
-              <div className="p-3 rounded-xl bg-emerald-50 text-emerald-700 w-fit">
-                <Award className="w-5 h-5" />
-              </div>
-              <h4 className="text-base font-bold text-gray-900">{cert.title}</h4>
-              <p className="text-xs text-gray-600 leading-relaxed">{cert.description}</p>
-            </div>
-          ))}
+              <Phone className="w-3.5 h-3.5 text-red-600" />
+              <span>+880 1335-149006</span>
+            </a>
+            <Link
+              href="/contact"
+              className="px-5 py-3 text-xs font-bold rounded-xl text-white bg-[#0b3674] hover:bg-[#072147] shadow transition-colors"
+            >
+              <span>Contact Page</span>
+            </Link>
+          </div>
         </div>
       </section>
     </div>

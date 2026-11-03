@@ -11,7 +11,6 @@ import {
   MessageCircle,
   Sparkles,
   Flame,
-  CheckCircle2,
 } from "lucide-react";
 import { RESTAURANT_MENU, PANTOA_CATEGORIES } from "@/data/menu";
 
@@ -19,10 +18,7 @@ export default function HomeSignatureExplorer() {
   const [activeTab, setActiveTab] = useState<"restaurant" | "pantoa" | "fmcg">("restaurant");
 
   const restaurantSignatures = RESTAURANT_MENU.flatMap((c) =>
-    c.items
-      .filter((i) => i.tag === "Chef Special" || i.tag === "Signature" || i.tag === "Bestseller")
-      .slice(0, 2)
-      .map((item) => ({ ...item, categoryName: c.category }))
+    c.items.slice(0, 2).map((item) => ({ ...item, categoryName: c.category }))
   ).slice(0, 6);
 
   const pantoaSignatures = PANTOA_CATEGORIES.flatMap((c) =>
@@ -31,22 +27,19 @@ export default function HomeSignatureExplorer() {
 
   return (
     <div className="bg-white rounded-3xl border border-gray-200/80 shadow-xl p-6 sm:p-10 space-y-8">
-      {/* Header & Interactive Mode Switcher */}
-      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-6 border-b border-gray-100">
+      {/* Header & Mode Switcher */}
+      <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-gray-100">
         <div>
           <span className="text-xs font-bold uppercase tracking-wider text-[#c71b27] bg-red-50 px-3 py-1 rounded-full border border-red-200">
-            Interactive Tasting &amp; Product Showcase
+            Visual Showcase
           </span>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0b3674] tracking-tight mt-3">
-            Explore Our Signature Creations
+          <h2 className="text-2xl sm:text-3xl font-black text-[#0b3674] tracking-tight mt-2">
+            Signature Flavors &amp; Delights
           </h2>
-          <p className="text-xs sm:text-sm text-gray-500 mt-1">
-            Switch between our restaurant gastronomy, pure dairy sweets, and commercial FMCG lines.
-          </p>
         </div>
 
-        {/* 3 Interactive Switcher Buttons */}
-        <div className="flex flex-wrap gap-2 bg-[#f7f6f2] p-1.5 rounded-2xl border border-gray-200/80">
+        {/* 3 Switcher Buttons */}
+        <div className="flex flex-wrap gap-2 bg-[#f7f6f2] p-1.5 rounded-2xl border border-gray-200">
           <button
             type="button"
             onClick={() => setActiveTab("restaurant")}
@@ -88,39 +81,49 @@ export default function HomeSignatureExplorer() {
         </div>
       </div>
 
-      {/* Tab 1: Restaurant Signatures */}
+      {/* Tab 1: Restaurant Photo Grid */}
       {activeTab === "restaurant" && (
         <div className="space-y-6 animate-in fade-in duration-200">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {restaurantSignatures.map((dish) => (
               <div
                 key={dish.id}
-                className="p-5 rounded-2xl border border-gray-100 hover:border-red-200 bg-gray-50/40 hover:bg-white hover:shadow-md transition-all flex flex-col justify-between"
+                className="group rounded-3xl border border-gray-100 bg-white hover:border-red-200 shadow-sm hover:shadow-xl transition-all overflow-hidden flex flex-col justify-between"
               >
                 <div>
-                  <div className="flex items-center justify-between gap-2 mb-2">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#c71b27] bg-red-50 px-2.5 py-0.5 rounded-md">
+                  <div className="relative aspect-[4/3] w-full bg-gray-100 overflow-hidden">
+                    <Image
+                      src={dish.image}
+                      alt={dish.name}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                    <span className="absolute top-3 left-3 px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider bg-white/95 text-[#0b3674]">
                       {dish.categoryName}
                     </span>
-                    <span className="text-sm font-extrabold text-[#0b3674]">
+                    <span className="absolute bottom-3 right-3 text-base font-black text-white bg-[#0b3674]/90 px-3 py-1 rounded-lg backdrop-blur-xs">
                       ৳{dish.price.toLocaleString()}
                     </span>
                   </div>
-                  <h4 className="text-base font-extrabold text-gray-900">{dish.name}</h4>
-                  <p className="text-xs text-gray-600 mt-1.5 leading-relaxed line-clamp-2">
-                    {dish.description}
-                  </p>
+
+                  <div className="p-4 space-y-1">
+                    <h4 className="text-base font-extrabold text-gray-900 group-hover:text-[#c71b27] transition-colors leading-snug">
+                      {dish.name}
+                    </h4>
+                    <p className="text-xs text-gray-500 line-clamp-1">{dish.description}</p>
+                  </div>
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between text-xs">
-                  <span className="text-[11px] text-gray-500 font-medium">{dish.serving}</span>
+                <div className="px-4 pb-4 pt-2 flex items-center justify-between border-t border-gray-50 text-xs">
+                  <span className="text-[11px] text-gray-400 font-medium">{dish.serving}</span>
                   <a
                     href={`https://wa.me/8801335149006?text=${encodeURIComponent(
-                      `Hello Marinozz Restaurant, I would like to reserve / order: ${dish.name} (৳${dish.price}).`
+                      `Hello Marinozz Restaurant, I would like to order / reserve: ${dish.name} (৳${dish.price}).`
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 font-bold text-[#c71b27] hover:text-[#0b3674] transition-colors"
+                    className="inline-flex items-center gap-1 font-bold text-[#c71b27] hover:text-[#0b3674]"
                   >
                     <MessageCircle className="w-3.5 h-3.5" />
                     <span>Quick Book</span>
@@ -133,52 +136,64 @@ export default function HomeSignatureExplorer() {
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
             <span className="text-xs text-gray-500 flex items-center gap-1.5">
               <Flame className="w-4 h-4 text-[#c71b27]" />
-              Prepared fresh to order at MG SAM Center, Level 4, 12 Mohakhali C/A, Dhaka-1212
+              MG SAM Center, Level 4, 12 Mohakhali C/A, Dhaka-1212
             </span>
             <Link
               href="/marinozz-restaurant#menu-repertoire"
               className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-bold rounded-xl bg-[#c71b27] text-white hover:bg-[#9e141d] transition-colors"
             >
-              <span>Open Full Interactive Menu &amp; Pre-Order</span>
+              <span>View Full Visual Menu</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
         </div>
       )}
 
-      {/* Tab 2: Pantoa Sweets & Bakery */}
+      {/* Tab 2: Pantoa Sweets Photo Grid */}
       {activeTab === "pantoa" && (
         <div className="space-y-6 animate-in fade-in duration-200">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {pantoaSignatures.map((prod) => (
               <div
                 key={prod.id}
-                className="p-5 rounded-2xl border border-gray-100 hover:border-amber-300 bg-amber-50/20 hover:bg-white hover:shadow-md transition-all flex flex-col justify-between"
+                className="group rounded-3xl border border-gray-100 bg-white hover:border-amber-300 shadow-sm hover:shadow-xl transition-all overflow-hidden flex flex-col justify-between"
               >
                 <div>
-                  <div className="flex items-center justify-between gap-2 mb-2">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-amber-800 bg-amber-100/80 px-2.5 py-0.5 rounded-md">
+                  <div className="relative aspect-[4/3] w-full bg-gray-100 overflow-hidden">
+                    <Image
+                      src={prod.image}
+                      alt={prod.name}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                    <span className="absolute top-3 left-3 px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider bg-white/95 text-amber-900">
                       {prod.categoryName}
                     </span>
-                    <span className="text-sm font-extrabold text-[#0b3674]">
+                    <span className="absolute bottom-3 right-3 text-base font-black text-white bg-amber-700/90 px-3 py-1 rounded-lg backdrop-blur-xs">
                       ৳{prod.price.toLocaleString()}
                     </span>
                   </div>
-                  <h4 className="text-base font-extrabold text-gray-900">{prod.name}</h4>
-                  <p className="text-xs text-gray-500 mt-1">Pack Unit: {prod.unit}</p>
+
+                  <div className="p-4 space-y-1">
+                    <h4 className="text-base font-extrabold text-gray-900 group-hover:text-amber-700 transition-colors leading-snug">
+                      {prod.name}
+                    </h4>
+                    <p className="text-xs text-gray-400">Pack: {prod.unit}</p>
+                  </div>
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between text-xs">
-                  <span className="text-[11px] text-emerald-700 font-semibold flex items-center gap-1">
-                    <Sparkles className="w-3 h-3" /> 100% Pure Cow Dairy
+                <div className="px-4 pb-4 pt-2 flex items-center justify-between border-t border-gray-50 text-xs">
+                  <span className="text-[11px] text-emerald-700 font-bold flex items-center gap-1">
+                    <Sparkles className="w-3 h-3" /> 100% Pure Dairy
                   </span>
                   <a
                     href={`https://wa.me/8801335149006?text=${encodeURIComponent(
-                      `Hello Pantoa Sweets & Bakery, I would like to order: ${prod.name} (${prod.unit} - ৳${prod.price}).`
+                      `Hello Pantoa Sweets, I would like to order: ${prod.name} (${prod.unit} - ৳${prod.price}).`
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 font-bold text-amber-700 hover:text-[#0b3674] transition-colors"
+                    className="inline-flex items-center gap-1 font-bold text-amber-700 hover:text-[#0b3674]"
                   >
                     <MessageCircle className="w-3.5 h-3.5" />
                     <span>Order Box</span>
@@ -190,89 +205,79 @@ export default function HomeSignatureExplorer() {
 
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
             <span className="text-xs text-gray-500">
-              Zero synthetic colors • Pure Country Cow Ghee • Daily Morning Batch
+              MG SAM Center, Ground Floor, 12 Mohakhali C/A, Dhaka-1212
             </span>
             <Link
               href="/pantoa-sweets-bakery#sweet-catalog"
               className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-bold rounded-xl bg-amber-600 text-white hover:bg-amber-700 transition-colors"
             >
-              <span>Build Custom Sweet Box &amp; Hampers</span>
+              <span>Build Custom Sweet Boxes</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </Link>
           </div>
         </div>
       )}
 
-      {/* Tab 3: FMCG & Supply Backbone */}
+      {/* Tab 3: FMCG & Supply Backbone Photo Cards */}
       {activeTab === "fmcg" && (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 animate-in fade-in duration-200">
-          <div className="p-6 rounded-2xl bg-[#f7f6f2] border border-gray-200 space-y-4">
-            <div className="relative h-12 w-48">
+          <div className="group rounded-3xl border border-gray-200 overflow-hidden bg-white shadow-sm hover:shadow-xl transition-all">
+            <div className="relative aspect-[16/9] w-full bg-gray-100 overflow-hidden">
               <Image
-                src="/logos/marinozz-confectionery.png"
-                alt="Marinozz Confectionery PLC"
+                src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=1200&q=80"
+                alt="Marinozz Confectionery Commercial Baking"
                 fill
-                className="object-contain object-left"
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
               />
-            </div>
-            <h4 className="text-lg font-extrabold text-[#0b3674]">
-              Marinozz Confectionery PLC — Packaged FMCG Lineup
-            </h4>
-            <p className="text-xs text-gray-600 leading-relaxed">
-              ISO 22000 &amp; HACCP aligned commercial baking lines producing packaged biscuits, butter toast, dry cakes, and cream wafers for regional wholesale distribution.
-            </p>
-            <div className="grid grid-cols-2 gap-2 text-xs text-gray-700">
-              <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-3.5 h-3.5 text-[#c71b27]" />
-                <span>5+ Tons Daily Capacity</span>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+              <div className="absolute top-4 left-4">
+                <span className="px-3 py-1 rounded-full text-xs font-bold uppercase bg-white/95 text-red-700">
+                  Industrial FMCG
+                </span>
               </div>
-              <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-3.5 h-3.5 text-[#c71b27]" />
-                <span>24+ Retail SKUs</span>
+              <div className="absolute bottom-4 left-4 right-4 text-white">
+                <h4 className="text-xl font-black">Marinozz Confectionery PLC</h4>
+                <p className="text-xs text-gray-200 mt-0.5">5+ Tons Daily Commercial Capacity • 24+ SKUs</p>
               </div>
             </div>
-            <div className="pt-2">
+            <div className="p-5 flex items-center justify-between">
+              <span className="text-xs font-bold text-gray-700">ISO 22000 &amp; HACCP Certified</span>
               <Link
                 href="/brands#confectionery"
                 className="inline-flex items-center gap-1.5 text-xs font-bold text-[#c71b27] hover:underline"
               >
-                <span>View Wholesale Specifications</span>
+                <span>Wholesale Details</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
           </div>
 
-          <div className="p-6 rounded-2xl bg-[#f7f6f2] border border-gray-200 space-y-4">
-            <div className="relative h-12 w-48">
+          <div className="group rounded-3xl border border-gray-200 overflow-hidden bg-white shadow-sm hover:shadow-xl transition-all">
+            <div className="relative aspect-[16/9] w-full bg-gray-100 overflow-hidden">
               <Image
-                src="/logos/marinozz-plc.png"
-                alt="Marinozz PLC"
+                src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80"
+                alt="Marinozz PLC Corporate Holding"
                 fill
-                className="object-contain object-left"
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
               />
-            </div>
-            <h4 className="text-lg font-extrabold text-[#0b3674]">
-              Marinozz PLC — Corporate Governance &amp; Cold-Chain
-            </h4>
-            <p className="text-xs text-gray-600 leading-relaxed">
-              The holding and supply chain engine associated with Mariners Group, managing direct dairy farm procurement, refrigerated logistics, and franchise compliance.
-            </p>
-            <div className="grid grid-cols-2 gap-2 text-xs text-gray-700">
-              <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-3.5 h-3.5 text-[#0b3674]" />
-                <span>Zero-Break Cold Fleet</span>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+              <div className="absolute top-4 left-4">
+                <span className="px-3 py-1 rounded-full text-xs font-bold uppercase bg-white/95 text-[#0b3674]">
+                  Supply Backbone
+                </span>
               </div>
-              <div className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-3.5 h-3.5 text-[#0b3674]" />
-                <span>Turnkey Franchise Hub</span>
+              <div className="absolute bottom-4 left-4 right-4 text-white">
+                <h4 className="text-xl font-black">Marinozz PLC — Mariners Associated</h4>
+                <p className="text-xs text-gray-200 mt-0.5">Cold Chain Logistics &amp; Franchise Governance</p>
               </div>
             </div>
-            <div className="pt-2">
+            <div className="p-5 flex items-center justify-between">
+              <span className="text-xs font-bold text-gray-700">Centralized Procurement Engine</span>
               <Link
                 href="/ecosystem"
                 className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0b3674] hover:underline"
               >
-                <span>Explore 5-Pillar Supply Ecosystem</span>
+                <span>Explore Ecosystem</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>

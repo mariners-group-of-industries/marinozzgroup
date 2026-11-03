@@ -1,38 +1,49 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, ShieldCheck, Factory, Building2, Utensils, Cake } from "lucide-react";
+import {
+  ArrowRight,
+  CheckCircle2,
+  ShieldCheck,
+  Factory,
+  Building2,
+  Utensils,
+  Cake,
+  Phone,
+  MapPin,
+  Sparkles,
+} from "lucide-react";
 import PageHeader from "@/components/PageHeader";
-import { BRANDS } from "@/data/brands";
 
 export const metadata = {
   title: "Our Brands | Marinozz Multicuisine Restaurant, Pantoa Sweets & Marinozz PLC",
   description:
-    "Discover the multi-brand food and hospitality portfolio of Marinozz Group, including Marinozz Restaurant, Pantoa Sweets & Bakery, Marinozz Confectionery PLC, and Marinozz PLC.",
+    "Explore the 4 unified brands of Marinozz Group: fine dining, pure milk sweets & bakery, industrial food manufacturing, and corporate supply chain.",
 };
 
 export default function BrandsPage() {
   return (
-    <div className="space-y-20 pb-24">
+    <div className="space-y-16 sm:space-y-24 pb-24 overflow-hidden">
       <PageHeader
-        badge="Brand Ecosystem"
         title="Our Portfolio of Brands"
-        subtitle="Uniting diverse culinary formats under one uncompromising corporate standard of purity, taste, and hospitality."
-        breadcrumb={[{ label: "Our Brands" }]}
+        subtitle="Uniting fine dining, artisanal confectionery, industrial baking, and supply chain under unified corporate standards."
       />
 
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         {/* Brand 1: Marinozz Multicuisine Restaurant */}
-        <div id="restaurant" className="scroll-mt-28 bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden">
+        <div
+          id="restaurant"
+          className="scroll-mt-28 bg-white rounded-3xl border border-gray-200/80 shadow-md hover:shadow-2xl transition-all overflow-hidden"
+        >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center p-6 sm:p-10 lg:p-12">
-            <div className="lg:col-span-7 space-y-5">
-              <div className="flex items-center gap-3">
-                <span className="px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-red-700 bg-red-50 border border-red-200">
+            <div className="lg:col-span-7 space-y-6">
+              <div className="flex items-center gap-2">
+                <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-red-700 bg-red-50 border border-red-200">
                   Flagship Dining
                 </span>
-                <span className="text-xs text-gray-500">• Multicuisine Hospitality</span>
+                <span className="text-xs font-bold text-gray-500">• 180+ Seating Capacity</span>
               </div>
 
-              <div className="relative h-14 w-56">
+              <div className="relative h-16 w-64">
                 <Image
                   src="/logos/marinozz-restaurant.png"
                   alt="Marinozz Multicuisine Restaurant"
@@ -41,84 +52,93 @@ export default function BrandsPage() {
                 />
               </div>
 
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0b3674] tracking-tight">
+              <h2 className="text-2xl sm:text-3xl font-black text-[#0b3674] tracking-tight">
                 Marinozz Multicuisine Restaurant
               </h2>
 
-              <p className="text-sm font-medium text-gray-600 italic">
-                &ldquo;A Symphony of Global Flavours, Served with Maritime Warmth&rdquo;
-              </p>
-
-              <p className="text-sm text-gray-700 leading-relaxed">
-                Marinozz Multicuisine Restaurant is our premier fine dining destination, offering
-                an expansive gourmet repertoire spanning Continental steaks, sizzling platters,
-                vibrant Pan-Asian wok classics, authentic slow-cooked Mughlai dum biryanis, and
-                botanical mocktails.
-              </p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
                 {[
-                  "180+ Seating Capacity & Banquet Hall",
+                  "180+ Seating & VIP Banquet Hall",
                   "Continental, Pan-Asian & Mughlai",
                   "Transparent Kitchen & Daily Oil Testing",
-                  "Dedicated Family Suites & VIP Lounges",
+                  "Dedicated Family Suites & Valet Bay",
                 ].map((item, idx) => (
-                  <div key={idx} className="flex items-center gap-2 text-xs text-gray-700">
+                  <div
+                    key={idx}
+                    className="flex items-center gap-2 p-2.5 rounded-xl bg-[#f7f6f2] border border-gray-200 text-xs font-bold text-gray-800"
+                  >
                     <CheckCircle2 className="w-4 h-4 text-[#c71b27] flex-shrink-0" />
                     <span>{item}</span>
                   </div>
                 ))}
               </div>
 
-              <div className="pt-4 flex flex-wrap gap-4">
+              <div className="pt-2 flex flex-wrap gap-4">
                 <Link
                   href="/marinozz-restaurant"
-                  className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold rounded-xl text-white bg-[#c71b27] hover:bg-[#9e141d] shadow transition-colors"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 text-xs font-bold rounded-xl text-white bg-gradient-to-r from-[#c71b27] to-[#9e141d] hover:from-[#9e141d] hover:to-[#7f0f16] shadow-lg transition-all"
                 >
-                  <span>Explore Restaurant Page & Menu</span>
+                  <span>Explore Menu &amp; Venue</span>
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
                   href="/marinozz-restaurant#reservation"
-                  className="inline-flex items-center gap-2 px-5 py-3 text-sm font-semibold rounded-xl text-gray-700 bg-gray-100 hover:bg-gray-200 transition-colors"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 text-xs font-bold rounded-xl text-[#0b3674] bg-white border border-gray-200 hover:bg-gray-50 transition-all shadow-xs"
                 >
                   Book a Table
                 </Link>
               </div>
             </div>
 
-            <div className="lg:col-span-5 relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
+            <div className="lg:col-span-5 relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg group">
               <Image
                 src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80"
                 alt="Marinozz Multicuisine Restaurant Dining"
                 fill
-                className="object-cover"
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+              <div className="absolute bottom-4 left-4 right-4 text-white">
+                <span className="text-[10px] font-bold uppercase text-amber-300 block">
+                  Mohakhali Flagship Venue
+                </span>
+                <h4 className="text-base font-black">MG SAM Center, Mohakhali</h4>
+              </div>
             </div>
           </div>
         </div>
 
         {/* Brand 2: Pantoa Sweets & Bakery */}
-        <div id="pantoa" className="scroll-mt-28 bg-white rounded-3xl border border-gray-100 shadow-sm overflow-hidden">
+        <div
+          id="pantoa"
+          className="scroll-mt-28 bg-white rounded-3xl border border-gray-200/80 shadow-md hover:shadow-2xl transition-all overflow-hidden"
+        >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center p-6 sm:p-10 lg:p-12">
-            <div className="lg:col-span-5 relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg order-2 lg:order-1">
+            <div className="lg:col-span-5 relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg group order-2 lg:order-1">
               <Image
                 src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1200&q=80"
                 alt="Pantoa Sweets and Bakery Art"
                 fill
-                className="object-cover"
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
               />
-            </div>
-
-            <div className="lg:col-span-7 space-y-5 order-1 lg:order-2">
-              <div className="flex items-center gap-3">
-                <span className="px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-amber-800 bg-amber-50 border border-amber-200">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+              <div className="absolute bottom-4 left-4 right-4 text-white">
+                <span className="text-[10px] font-bold uppercase text-amber-300 block">
                   Artisanal Heritage
                 </span>
-                <span className="text-xs text-gray-500">• Sweets & European Bakery</span>
+                <h4 className="text-base font-black">100% Pure Cow Milk Sourcing</h4>
+              </div>
+            </div>
+
+            <div className="lg:col-span-7 space-y-6 order-1 lg:order-2">
+              <div className="flex items-center gap-2">
+                <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-amber-800 bg-amber-50 border border-amber-200">
+                  Artisanal Purity
+                </span>
+                <span className="text-xs font-bold text-gray-500">• Bengali Sweets &amp; Bakery</span>
               </div>
 
-              <div className="relative h-14 w-56 rounded-xl overflow-hidden shadow-xs border border-red-100">
+              <div className="relative h-16 w-60 rounded-2xl overflow-hidden shadow-xs border border-red-100 bg-white p-1">
                 <Image
                   src="/logos/pantoa-sweets.jpg"
                   alt="Pantoa Sweets & Bakery"
@@ -127,46 +147,38 @@ export default function BrandsPage() {
                 />
               </div>
 
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0b3674] tracking-tight">
-                Pantoa Sweets & Bakery
+              <h2 className="text-2xl sm:text-3xl font-black text-[#0b3674] tracking-tight">
+                Pantoa Sweets &amp; Bakery
               </h2>
 
-              <p className="text-sm font-medium text-gray-600 italic">
-                &ldquo;Timeless Bengali Confectionery Crafted with Modern Hygienic Mastery&rdquo;
-              </p>
-
-              <p className="text-sm text-gray-700 leading-relaxed">
-                Pantoa revives traditional Bengali sweet-making using 100% natural pure cow dairy,
-                zero synthetic colors, and authentic pure ghee. Combined with modern European pastry
-                craft, rich cheesecakes, and morning bakery goods, Pantoa is expanding into prime
-                high-street retail boutiques and express kiosks nationwide.
-              </p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
                 {[
                   "Signature Royal Pantoa & Mishti Doi",
                   "100% Pure Cow Milk Sourcing",
-                  "European Pastries & Artisanal Breads",
+                  "European Pastries & Artisan Oven Breads",
                   "Bespoke Corporate Gift Box Assortments",
                 ].map((item, idx) => (
-                  <div key={idx} className="flex items-center gap-2 text-xs text-gray-700">
+                  <div
+                    key={idx}
+                    className="flex items-center gap-2 p-2.5 rounded-xl bg-amber-50/50 border border-amber-200/80 text-xs font-bold text-gray-800"
+                  >
                     <CheckCircle2 className="w-4 h-4 text-amber-600 flex-shrink-0" />
                     <span>{item}</span>
                   </div>
                 ))}
               </div>
 
-              <div className="pt-4 flex flex-wrap gap-4">
+              <div className="pt-2 flex flex-wrap gap-4">
                 <Link
                   href="/pantoa-sweets-bakery"
-                  className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold rounded-xl text-white bg-amber-600 hover:bg-amber-700 shadow transition-colors"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 text-xs font-bold rounded-xl text-white bg-gradient-to-r from-amber-600 to-amber-700 hover:from-amber-700 hover:to-amber-800 shadow-lg transition-all"
                 >
-                  <span>Explore Pantoa Sweets Page</span>
+                  <span>Explore Sweets &amp; Bakery</span>
                   <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
                   href="/franchise"
-                  className="inline-flex items-center gap-2 px-5 py-3 text-sm font-semibold rounded-xl text-gray-700 bg-gray-100 hover:bg-gray-200 transition-colors"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 text-xs font-bold rounded-xl text-gray-700 bg-white border border-gray-200 hover:bg-gray-50 transition-all shadow-xs"
                 >
                   Franchise Inquiry
                 </Link>
@@ -176,17 +188,20 @@ export default function BrandsPage() {
         </div>
 
         {/* Brand 3: Marinozz Confectionery PLC */}
-        <div id="confectionery" className="scroll-mt-28 bg-white rounded-3xl border border-gray-100 shadow-sm p-6 sm:p-10 lg:p-12">
+        <div
+          id="confectionery"
+          className="scroll-mt-28 bg-white rounded-3xl border border-gray-200/80 shadow-md hover:shadow-2xl transition-all p-6 sm:p-10 lg:p-12 overflow-hidden"
+        >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-7 space-y-5">
-              <div className="flex items-center gap-3">
-                <span className="px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-red-700 bg-red-50 border border-red-200">
-                  Industrial Food Processing
+            <div className="lg:col-span-7 space-y-6">
+              <div className="flex items-center gap-2">
+                <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-red-700 bg-red-50 border border-red-200">
+                  Industrial Processing
                 </span>
-                <span className="text-xs text-gray-500">• FMCG & Commercial Baking</span>
+                <span className="text-xs font-bold text-gray-500">• FMCG &amp; Commercial Baking</span>
               </div>
 
-              <div className="relative h-14 w-56">
+              <div className="relative h-16 w-64">
                 <Image
                   src="/logos/marinozz-confectionery.png"
                   alt="Marinozz Confectionery PLC"
@@ -195,70 +210,69 @@ export default function BrandsPage() {
                 />
               </div>
 
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0b3674] tracking-tight">
+              <h2 className="text-2xl sm:text-3xl font-black text-[#0b3674] tracking-tight">
                 Marinozz Confectionery PLC
               </h2>
 
-              <p className="text-sm font-medium text-gray-600 italic">
-                &ldquo;Industrial Food Production Built on Precision, Purity & Scale&rdquo;
-              </p>
-
-              <p className="text-sm text-gray-700 leading-relaxed">
-                Operating semi-automated production lines adhering to ISO 22000 and HACCP food
-                safety benchmarks. Marinozz Confectionery PLC manufactures premium biscuits,
-                dry cakes, toast, wafers, and snack confectionery packaged for wholesale and
-                retail distribution across regional distribution channels.
-              </p>
-
-              <div className="p-4 rounded-xl bg-gray-50 border border-gray-200/60 grid grid-cols-2 sm:grid-cols-3 gap-3 text-center">
+              <div className="p-4 rounded-2xl bg-[#f7f6f2] border border-gray-200 grid grid-cols-3 gap-3 text-center">
                 <div>
-                  <div className="text-lg font-bold text-[#0b3674]">5 Tons+</div>
-                  <div className="text-[10px] text-gray-500 uppercase">Daily Capacity</div>
+                  <div className="text-xl font-black text-[#0b3674]">5 Tons+</div>
+                  <div className="text-[10px] font-bold text-gray-500 uppercase mt-0.5">Daily Capacity</div>
                 </div>
                 <div>
-                  <div className="text-lg font-bold text-[#c71b27]">ISO 22000</div>
-                  <div className="text-[10px] text-gray-500 uppercase">Food Standard</div>
+                  <div className="text-xl font-black text-[#c71b27]">ISO 22000</div>
+                  <div className="text-[10px] font-bold text-gray-500 uppercase mt-0.5">Food Standard</div>
                 </div>
                 <div>
-                  <div className="text-lg font-bold text-amber-600">24+ SKUs</div>
-                  <div className="text-[10px] text-gray-500 uppercase">Packaged Lineup</div>
+                  <div className="text-xl font-black text-amber-600">24+ SKUs</div>
+                  <div className="text-[10px] font-bold text-gray-500 uppercase mt-0.5">Packaged Lineup</div>
                 </div>
               </div>
 
               <div className="pt-2">
                 <Link
                   href="/contact"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-semibold rounded-lg bg-[#0b3674] text-white hover:bg-[#072147] transition-colors"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 text-xs font-bold rounded-xl bg-[#0b3674] text-white hover:bg-[#072147] shadow transition-colors"
                 >
-                  <span>Wholesale & Distribution Inquiries</span>
+                  <span>Wholesale &amp; Distribution Inquiries</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
               </div>
             </div>
 
-            <div className="lg:col-span-5 relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg">
+            <div className="lg:col-span-5 relative aspect-[4/3] rounded-2xl overflow-hidden shadow-lg group">
               <Image
                 src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=1200&q=80"
                 alt="Marinozz Confectionery PLC Facility"
                 fill
-                className="object-cover"
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+              <div className="absolute bottom-4 left-4 right-4 text-white">
+                <span className="text-[10px] font-bold uppercase text-amber-300 block">
+                  Automated Plant
+                </span>
+                <h4 className="text-base font-black">Industrial Food Manufacturing</h4>
+              </div>
             </div>
           </div>
         </div>
 
         {/* Brand 4: Marinozz PLC */}
-        <div id="marinozz-plc" className="scroll-mt-28 bg-[#f7f6f2] rounded-3xl border border-gray-200 shadow-sm p-6 sm:p-10 lg:p-12">
+        <div
+          id="marinozz-plc"
+          className="scroll-mt-28 bg-[#f7f6f2] rounded-3xl border border-gray-200 shadow-md hover:shadow-2xl transition-all p-6 sm:p-10 lg:p-12 overflow-hidden"
+        >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-7 space-y-5">
-              <div className="flex items-center gap-3">
-                <span className="px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider text-blue-800 bg-blue-100 border border-blue-200">
+            <div className="lg:col-span-7 space-y-6">
+              <div className="flex items-center gap-2">
+                <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider text-blue-800 bg-blue-100 border border-blue-200">
                   Strategic Corporate Entity
                 </span>
-                <span className="text-xs text-gray-500">• Supply Chain & Holding</span>
+                <span className="text-xs font-bold text-gray-500">• Supply Chain &amp; Holding</span>
               </div>
 
-              <div className="relative h-14 w-56">
+              <div className="relative h-16 w-64">
                 <Image
                   src="/logos/marinozz-plc.png"
                   alt="Marinozz PLC"
@@ -267,52 +281,58 @@ export default function BrandsPage() {
                 />
               </div>
 
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0b3674] tracking-tight">
+              <h2 className="text-2xl sm:text-3xl font-black text-[#0b3674] tracking-tight">
                 Marinozz PLC
               </h2>
 
-              <p className="text-sm font-medium text-gray-600 italic">
-                &ldquo;The Strategic Backbone of Food & Hospitality Supply Chain&rdquo;
-              </p>
-
-              <p className="text-sm text-gray-700 leading-relaxed">
-                Marinozz PLC manages group-wide commodity sourcing, cold chain logistics,
-                franchise administration, and brand equity. In partnership with Mariners Group,
-                Marinozz PLC guarantees that every outlet receives guaranteed, timely inventory
-                while upholding strict corporate governance.
-              </p>
-
-              <div className="flex flex-wrap gap-4 pt-2">
-                <div className="flex items-center gap-2 text-xs text-gray-700">
-                  <ShieldCheck className="w-4 h-4 text-[#0b3674]" />
-                  <span>Corporate Governance & Audit</span>
-                </div>
-                <div className="flex items-center gap-2 text-xs text-gray-700">
-                  <Building2 className="w-4 h-4 text-[#0b3674]" />
-                  <span>Franchise Compliance Hub</span>
-                </div>
-                <div className="flex items-center gap-2 text-xs text-gray-700">
-                  <Factory className="w-4 h-4 text-[#0b3674]" />
-                  <span>Central Procurement Engine</span>
-                </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+                {[
+                  { title: "Corporate Audit", sub: "Board Governance", icon: ShieldCheck },
+                  { title: "Franchise Hub", sub: "Compliance Engine", icon: Building2 },
+                  { title: "Central Fleet", sub: "Daily Cold Logistics", icon: Factory },
+                ].map((item, idx) => {
+                  const Icon = item.icon;
+                  return (
+                    <div
+                      key={idx}
+                      className="p-3 rounded-2xl bg-white border border-gray-200 shadow-2xs space-y-1"
+                    >
+                      <Icon className="w-5 h-5 text-[#0b3674]" />
+                      <div className="text-xs font-black text-gray-900">{item.title}</div>
+                      <div className="text-[10px] text-gray-500">{item.sub}</div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
 
-            <div className="lg:col-span-5 bg-white p-6 rounded-2xl border border-gray-200 space-y-4">
-              <h4 className="text-sm font-bold text-[#0b3674]">Corporate Inquiries</h4>
-              <p className="text-xs text-gray-600 leading-relaxed">
-                For institutional supplier proposals, real estate leasing for retail expansion, or
-                investor briefings, contact the Marinozz PLC executive office.
-              </p>
-              <div className="text-xs text-gray-700 space-y-1 pt-1">
-                <p><strong>Corporate Desk:</strong> +880 1335-149006</p>
-                <p><strong>Location:</strong> MG SAM Center, 12 Mohakhali C/A, Dhaka-1212</p>
+            <div className="lg:col-span-5 bg-white p-6 sm:p-8 rounded-3xl border border-gray-200 shadow-sm space-y-5">
+              <div>
+                <span className="text-[10px] font-black uppercase tracking-wider text-red-600 bg-red-50 px-2.5 py-1 rounded-full">
+                  Executive Desk
+                </span>
+                <h4 className="text-lg font-black text-[#0b3674] mt-2">Marinozz PLC Corporate Office</h4>
               </div>
+
+              <div className="text-xs text-gray-700 space-y-2.5">
+                <div className="flex items-center gap-2">
+                  <Phone className="w-4 h-4 text-red-600 flex-shrink-0" />
+                  <span className="font-bold">+880 1335-149006</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <MapPin className="w-4 h-4 text-red-600 flex-shrink-0 mt-0.5" />
+                  <span className="font-medium text-gray-600">
+                    MG SAM Center, 12 Mohakhali C/A, Dhaka-1212
+                  </span>
+                </div>
+              </div>
+
               <Link
                 href="/contact"
-                className="w-full inline-flex items-center justify-center px-4 py-2 text-xs font-semibold rounded-lg bg-[#0b3674] text-white hover:bg-[#072147] transition-colors"
+                className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 text-xs font-bold rounded-xl bg-[#0b3674] text-white hover:bg-[#072147] shadow transition-colors"
               >
-                Contact Marinozz PLC
+                <span>Contact Corporate Office</span>
+                <ArrowRight className="w-3.5 h-3.5" />
               </Link>
             </div>
           </div>

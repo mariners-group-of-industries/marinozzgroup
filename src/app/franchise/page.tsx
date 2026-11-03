@@ -17,51 +17,64 @@ export default function FranchisePage() {
         subtitle="Join hands with a high-growth food and hospitality ecosystem backed by the heritage and corporate governance of Mariners Group."
       />
 
-      {/* Intro Value Proposition */}
+      {/* Intro Value Proposition (Visual-First, No Text Walls) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-6 space-y-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          <div className="lg:col-span-7 space-y-6">
             <span className="text-xs font-bold uppercase tracking-wider text-[#c71b27] bg-red-50 px-3 py-1 rounded-full border border-red-200">
-              Why Marinozz Group
+              Franchise Opportunities 2026
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0b3674] tracking-tight">
-              A Turnkey Food Enterprise Model Built for Long-Term Prosperity
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0b3674] tracking-tight leading-tight">
+              Turnkey Food &amp; Hospitality Partnerships
             </h2>
-            <p className="text-base text-gray-700 leading-relaxed">
-              Operating a food or restaurant business independently is often hindered by chef
-              turnover, kitchen variance, supply chain breakdowns, and high wastage.
-            </p>
-            <p className="text-sm text-gray-600 leading-relaxed">
-              Marinozz Group de-risks your investment through centralized production and proven
-              operational blueprints. We prepare the core sweets, sauces, and baked products in our
-              hygienic central facilities and deliver them directly to your counter, drastically
-              reducing your kitchen footprint, overhead, and food wastage.
-            </p>
 
-            <div className="grid grid-cols-2 gap-4 pt-2">
-              <div className="p-4 rounded-2xl bg-white border border-gray-200 shadow-xs">
-                <div className="text-2xl font-extrabold text-[#c71b27]">Turnkey</div>
-                <div className="text-xs text-gray-500 mt-1">
-                  Complete interior design &amp; fit-out support
+            {/* Visual Advantage Pills */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1">
+              {[
+                { title: "Turnkey Setup", sub: "Interior Fit-Out", color: "bg-red-50 text-[#c71b27] border-red-200" },
+                { title: "Daily Fleet Supply", sub: "Refrigerated Stock", color: "bg-blue-50 text-[#0b3674] border-blue-200" },
+                { title: "Zero Food Waste", sub: "Central Kitchen", color: "bg-emerald-50 text-emerald-700 border-emerald-200" },
+                { title: "Staff Academy", sub: "Hospitality Training", color: "bg-amber-50 text-amber-800 border-amber-200" },
+              ].map((pill, pIdx) => (
+                <div key={pIdx} className={`p-3 rounded-2xl border ${pill.color}`}>
+                  <div className="text-xs font-black">{pill.title}</div>
+                  <div className="text-[10px] font-semibold opacity-80 mt-0.5">{pill.sub}</div>
                 </div>
-              </div>
-              <div className="p-4 rounded-2xl bg-white border border-gray-200 shadow-xs">
-                <div className="text-2xl font-extrabold text-[#0b3674]">Daily Supply</div>
-                <div className="text-xs text-gray-500 mt-1">
-                  Refrigerated cold-chain inventory delivery
-                </div>
-              </div>
+              ))}
+            </div>
+
+            <div className="pt-2 flex flex-wrap gap-4">
+              <a
+                href="#application-form"
+                className="inline-flex items-center gap-2 px-7 py-4 text-xs font-bold rounded-2xl text-white bg-gradient-to-r from-[#c71b27] to-[#9e141d] hover:from-[#9e141d] hover:to-[#7f0f16] shadow-xl shadow-red-900/15 hover:-translate-y-0.5 transition-all"
+              >
+                <span>Apply for Franchise</span>
+                <span className="text-sm">→</span>
+              </a>
+              <a
+                href="#models"
+                className="inline-flex items-center gap-2 px-6 py-4 text-xs font-bold rounded-2xl text-[#0b3674] bg-white border border-gray-200 hover:bg-gray-50 transition-all shadow-xs"
+              >
+                <span>View Models &amp; Margins</span>
+              </a>
             </div>
           </div>
 
-          <div className="lg:col-span-6">
-            <div className="relative rounded-3xl overflow-hidden aspect-[4/3] shadow-xl border border-gray-100">
+          <div className="lg:col-span-5">
+            <div className="relative rounded-3xl overflow-hidden aspect-[4/3] shadow-2xl border border-gray-100 group">
               <Image
                 src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80"
                 alt="Marinozz Franchise Hospitality"
                 fill
-                className="object-cover"
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+              <div className="absolute bottom-5 left-5 right-5 text-white">
+                <span className="text-[10px] font-bold uppercase text-amber-300 block">
+                  Turnkey Operations
+                </span>
+                <h4 className="text-base font-black">Centralized Sourcing &amp; Proven Footprint</h4>
+              </div>
             </div>
           </div>
         </div>

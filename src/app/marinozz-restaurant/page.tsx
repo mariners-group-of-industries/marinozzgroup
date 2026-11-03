@@ -68,11 +68,11 @@ export default function MarinozzRestaurantPage() {
         ]}
       />
 
-      {/* Brand Hero & Introduction */}
+      {/* Brand Hero & Introduction (Visual-First, No Text Walls) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           <div className="lg:col-span-7 space-y-6">
-            <div className="relative h-16 w-60">
+            <div className="relative h-16 w-64">
               <Image
                 src="/logos/marinozz-restaurant.png"
                 alt="Marinozz Multicuisine Restaurant Logo"
@@ -82,30 +82,30 @@ export default function MarinozzRestaurantPage() {
               />
             </div>
 
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0b3674] tracking-tight">
-              An Elevated Dining Destination Where Every Dish Tells a Story
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0b3674] tracking-tight leading-tight">
+              Gourmet Multicuisine Fine Dining
             </h2>
 
-            <p className="text-base text-gray-700 leading-relaxed">
-              At Marinozz Multicuisine Restaurant, culinary excellence is treated with the rigor and
-              refinement of maritime discipline. Conceived under the corporate umbrella of Marinozz
-              Group, our restaurant offers an inclusive culinary sanctuary where authentic Continental
-              steaks, sizzling delicacies, fragrant Pan-Asian wok classics, and royal Mughlai dum
-              biryanis coexist in absolute harmony.
-            </p>
-
-            <p className="text-sm text-gray-600 leading-relaxed">
-              We source directly from certified farms, use 100% Halal meats, maintain zero trans-fat
-              cooking protocols, and conduct daily microbiological oil tests. Whether you are hosting
-              a milestone family reunion, an executive corporate luncheon, or an intimate dinner, our
-              captains and stewards ensure an unforgettable experience.
-            </p>
+            {/* Visual Feature Badges */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1">
+              {[
+                { title: "180+ Seating", sub: "Spacious Hall", color: "bg-red-50 text-[#c71b27]" },
+                { title: "Continental & Mughlai", sub: "Global Menu", color: "bg-blue-50 text-[#0b3674]" },
+                { title: "100% Halal", sub: "ISO Aligned", color: "bg-emerald-50 text-emerald-700" },
+                { title: "Live Open Kitchen", sub: "Daily Oil Tested", color: "bg-amber-50 text-amber-700" },
+              ].map((badge, bIdx) => (
+                <div key={bIdx} className={`p-3 rounded-2xl border border-gray-200/80 ${badge.color}`}>
+                  <div className="text-xs font-black">{badge.title}</div>
+                  <div className="text-[10px] font-semibold opacity-80 mt-0.5">{badge.sub}</div>
+                </div>
+              ))}
+            </div>
 
             {/* Quick Action CTAs */}
-            <div className="pt-2 flex flex-wrap gap-4">
+            <div className="pt-3 flex flex-wrap gap-4">
               <a
                 href="#reservation"
-                className="inline-flex items-center gap-2 px-6 py-3.5 text-sm font-semibold rounded-xl text-white bg-[#c71b27] hover:bg-[#9e141d] shadow transition-colors"
+                className="inline-flex items-center gap-2 px-7 py-4 text-xs font-bold rounded-2xl text-white bg-gradient-to-r from-[#c71b27] to-[#9e141d] hover:from-[#9e141d] hover:to-[#7f0f16] shadow-xl shadow-red-900/15 hover:-translate-y-0.5 transition-all"
               >
                 <Calendar className="w-4 h-4" />
                 <span>Reserve a Table</span>
@@ -115,15 +115,15 @@ export default function MarinozzRestaurantPage() {
                 href={`https://wa.me/${restaurantLocation.whatsapp.replace(/\+/g, "")}?text=Hello,%20I%20would%20like%20to%20inquire%20about%20a%20table%20reservation%20at%20Marinozz%20Restaurant.`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3.5 text-sm font-semibold rounded-xl text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-4 text-xs font-bold rounded-2xl text-emerald-800 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 transition-all"
               >
                 <MessageCircle className="w-4 h-4 text-emerald-600" />
-                <span>WhatsApp Front Desk</span>
+                <span>WhatsApp Desk</span>
               </a>
 
               <a
                 href={`tel:${restaurantLocation.phone}`}
-                className="inline-flex items-center gap-2 px-5 py-3.5 text-sm font-semibold rounded-xl text-gray-700 bg-gray-100 hover:bg-gray-200 transition-colors"
+                className="inline-flex items-center gap-2 px-5 py-4 text-xs font-bold rounded-2xl text-gray-700 bg-white border border-gray-200 hover:bg-gray-50 transition-all shadow-xs"
               >
                 <Phone className="w-4 h-4 text-red-600" />
                 <span>{restaurantLocation.phone}</span>
@@ -132,22 +132,27 @@ export default function MarinozzRestaurantPage() {
           </div>
 
           <div className="lg:col-span-5 relative">
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/5] border border-gray-100">
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/5] border border-gray-100 group">
               <Image
                 src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80"
                 alt="Marinozz Multicuisine Sizzler Dish"
                 fill
                 priority
-                className="object-cover"
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+              <div className="absolute top-4 left-4">
+                <span className="text-[10px] font-black uppercase tracking-wider px-3 py-1 rounded-full bg-white/95 text-[#c71b27] shadow-sm">
+                  Chef&apos;s Sizzler Feature
+                </span>
+              </div>
               <div className="absolute bottom-6 left-6 right-6 text-white">
                 <span className="text-xs font-bold uppercase tracking-wider text-amber-300">
                   Signature Specialty
                 </span>
-                <h4 className="text-lg font-bold">Marinozz Volcanic Mixed Sizzler</h4>
+                <h4 className="text-xl font-black mt-0.5">Volcanic Mixed Sizzler</h4>
                 <p className="text-xs text-gray-200 mt-1">
-                  Smoked oakwood charcoal aroma, succulent tenderloin & tiger prawns.
+                  Smoked oakwood charcoal aroma, succulent tenderloin &amp; tiger prawns.
                 </p>
               </div>
             </div>
@@ -155,68 +160,78 @@ export default function MarinozzRestaurantPage() {
         </div>
       </section>
 
-      {/* The Dining Experience & Facilities */}
+      {/* The Dining Experience & Facilities (Visual Photo Cards) */}
       <section className="bg-[#f7f6f2] py-20 border-y border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-semibold uppercase tracking-wider text-[#0b3674] bg-blue-50 px-3 py-1 rounded-full">
+          <div className="text-center max-w-xl mx-auto mb-14">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#0b3674] bg-blue-50 px-3 py-1 rounded-full">
               Hospitality Standards
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0b3674] tracking-tight mt-3">
-              The Marinozz Dining Experience
+            <h2 className="text-2xl sm:text-3xl font-black text-[#0b3674] tracking-tight mt-2">
+              Premium Dining Amenities
             </h2>
-            <p className="text-sm text-gray-600 mt-2">
-              Thoughtfully architected to deliver tranquility, privacy, and exceptional service for every occasion.
-            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
-                title: "180+ Seating & Private Booths",
-                desc: "Spacious, ergonomically designed seating with acoustic separation for comfortable family and executive dining.",
+                title: "180+ Seating & VIP Suites",
+                tag: "Family & Corporate",
+                image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80",
                 icon: Users,
               },
               {
                 title: "Executive Banquet Hall",
-                desc: "Dedicated private event space accommodating up to 150 guests for corporate seminars, birthdays, and celebrations.",
+                tag: "Up to 150 Guests",
+                image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=600&q=80",
                 icon: Award,
               },
               {
                 title: "Transparent Live Kitchen",
-                desc: "Guests can observe food preparation, tandoor bakes, and wok tossing through hygienic observation glass.",
+                tag: "Visible Hygiene",
+                image: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=600&q=80",
                 icon: UtensilsCrossed,
               },
               {
                 title: "Secured Valet Parking",
-                desc: "Dedicated basement parking bay with professional valet attendants for a stress-free arrival.",
+                tag: "Basement Bay",
+                image: "https://images.unsplash.com/photo-1506521781263-d8422e82f27a?auto=format&fit=crop&w=600&q=80",
                 icon: Car,
               },
               {
                 title: "Dedicated Prayer Space",
-                desc: "Clean, peaceful prayer room with separate ablution facilities for ladies and gentlemen.",
+                tag: "Ablution Facility",
+                image: "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=600&q=80",
                 icon: Sparkles,
               },
               {
-                title: "High-Speed Wi-Fi & Lounge",
-                desc: "Complimentary enterprise-grade connectivity for business dining and digital work lunches.",
+                title: "High-Speed Wi-Fi Lounge",
+                tag: "Enterprise Connectivity",
+                image: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80",
                 icon: Wifi,
               },
-            ].map((facility, idx) => {
-              const Icon = facility.icon;
-              return (
-                <div
-                  key={idx}
-                  className="bg-white p-6 rounded-2xl border border-gray-200/80 shadow-sm space-y-3"
-                >
-                  <div className="p-3 rounded-xl bg-red-50 text-[#c71b27] w-fit">
-                    <Icon className="w-5 h-5" />
-                  </div>
-                  <h3 className="text-base font-bold text-gray-900">{facility.title}</h3>
-                  <p className="text-xs text-gray-600 leading-relaxed">{facility.desc}</p>
+            ].map((facility, idx) => (
+              <div
+                key={idx}
+                className="group relative rounded-3xl overflow-hidden aspect-[4/3] bg-gray-900 shadow-sm hover:shadow-xl transition-all"
+              >
+                <Image
+                  src={facility.image}
+                  alt={facility.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
+                <div className="absolute top-4 left-4">
+                  <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-red-600 text-white shadow-sm">
+                    {facility.tag}
+                  </span>
                 </div>
-              );
-            })}
+                <div className="absolute bottom-5 left-5 right-5 text-white">
+                  <h3 className="text-base font-black leading-snug">{facility.title}</h3>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

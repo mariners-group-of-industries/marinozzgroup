@@ -17,6 +17,7 @@ import {
 import PageHeader from "@/components/PageHeader";
 import MenuSection from "@/components/MenuSection";
 import InquiryForm from "@/components/InquiryForm";
+import RestaurantGallery from "@/components/RestaurantGallery";
 import { LOCATIONS } from "@/data/locations";
 
 export const metadata = {
@@ -241,25 +242,7 @@ export default function MarinozzRestaurantPage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
-          {galleryImages.map((img, idx) => (
-            <div
-              key={idx}
-              className="group relative rounded-2xl overflow-hidden aspect-[4/3] bg-gray-100 shadow-sm"
-            >
-              <Image
-                src={img.url}
-                alt={img.caption}
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="absolute bottom-3 left-3 right-3 text-white text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity">
-                {img.caption}
-              </div>
-            </div>
-          ))}
-        </div>
+        <RestaurantGallery />
       </section>
 
       {/* Branch Location & Google Maps + Reservation Form */}

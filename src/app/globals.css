@@ -59,14 +59,46 @@ body {
 /* Modern Form Validation Feedback according to Modern Web Guidance */
 input:user-invalid,
 textarea:user-invalid,
-select:user-invalid {
+select:user-invalid,
+input.user-invalid-fallback,
+textarea.user-invalid-fallback,
+select.user-invalid-fallback {
   border-color: #dc2626 !important;
   background-color: #fef2f2 !important;
 }
 
 input:user-valid:not(:placeholder-shown),
-textarea:user-valid:not(:placeholder-shown) {
+textarea:user-valid:not(:placeholder-shown),
+input.user-valid-fallback:not(:placeholder-shown),
+textarea.user-valid-fallback:not(:placeholder-shown) {
   border-color: #16a34a;
+}
+
+.field-error-msg {
+  display: none;
+  color: #dc2626;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+  font-weight: 500;
+}
+
+input:user-invalid + .field-error-msg,
+textarea:user-invalid + .field-error-msg,
+input.user-invalid-fallback + .field-error-msg,
+textarea.user-invalid-fallback + .field-error-msg {
+  display: block;
+}
+
+/* Native Modal Dialog & Top-Layer Backdrop (Modern Web Guidance) */
+dialog:modal {
+  overscroll-behavior: contain;
+}
+
+dialog::backdrop {
+  overflow: hidden;
+  overscroll-behavior: contain;
+  background-color: rgba(7, 33, 71, 0.65);
+  backdrop-filter: blur(4px);
 }
 
 /* Elegant custom scrollbar */

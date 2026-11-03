@@ -1,9 +1,18 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Search, Calendar, Clock, ArrowRight, X, Shield, Share2 } from "lucide-react";
+import {
+  Search,
+  Calendar,
+  Clock,
+  ArrowRight,
+  X,
+  Share2,
+  Check,
+  MessageCircle,
+} from "lucide-react";
 import PageHeader from "@/components/PageHeader";
 import { INITIAL_NEWS, NewsArticle } from "@/data/news";
 
@@ -12,23 +21,85 @@ export default function NewsPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [activeArticle, setActiveArticle] = useState<NewsArticle | null>(null);
+  const [copiedId, setCopiedId] = useState<string | null>(null);
+  const dialogRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
+    let loaded = INITIAL_NEWS;
     const saved = localStorage.getItem("marinozz_news");
     if (saved) {
       try {
-        setArticles(JSON.parse(saved));
+        loaded = JSON.parse(saved);
+        setArticles(loaded);
       } catch (e) {
         console.error(e);
       }
     }
+
+    // Check URL query parameter ?id= or ?story= to auto-open article modal
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const storyId = params.get("id") || params.get("story");
+      if (storyId) {
+        const match = loaded.find((a) => a.id === storyId || a.slug === storyId);
+        if (match) {
+          setTimeout(() => openStoryModal(match), 80);
+        }
+      }
+    }
   }, []);
+
+  // Fallback for <dialog closedby="any">
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    if (
+      dialog &&
+      typeof HTMLDialogElement !== "undefined" &&
+      !("closedBy" in HTMLDialogElement.prototype)
+    ) {
+      const handleBackdropClick = (event: MouseEvent) => {
+        if (event.target !== dialog) return;
+        const rect = dialog.getBoundingClientRect();
+        const isDialogContent =
+          rect.top <= event.clientY &&
+          event.clientY <= rect.top + rect.height &&
+          rect.left <= event.clientX &&
+          event.clientX <= rect.left + rect.width;
+        if (isDialogContent) return;
+        dialog.close();
+      };
+      dialog.addEventListener("click", handleBackdropClick);
+      return () => dialog.removeEventListener("click", handleBackdropClick);
+    }
+  }, []);
+
+  const openStoryModal = (art: NewsArticle) => {
+    setActiveArticle(art);
+    const dialog = dialogRef.current;
+    if (dialog && !dialog.open) {
+      dialog.showModal();
+    }
+  };
+
+  const closeStoryModal = () => {
+    dialogRef.current?.close();
+    setActiveArticle(null);
+  };
+
+  const handleCopyShare = (art: NewsArticle) => {
+    if (typeof window === "undefined") return;
+    const url = `${window.location.origin}/news?id=${art.id}`;
+    navigator.clipboard?.writeText(url);
+    setCopiedId(art.id);
+    setTimeout(() => setCopiedId(null), 2000);
+  };
 
   const categories = ["All", "Corporate", "Restaurant", "Bakery", "Franchise", "Community"];
 
   const filtered = articles.filter((art) => {
     const matchesCategory =
-      selectedCategory === "All" || art.category.toLowerCase() === selectedCategory.toLowerCase();
+      selectedCategory === "All" ||
+      art.category.toLowerCase() === selectedCategory.toLowerCase();
     const matchesSearch =
       art.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       art.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
@@ -38,10 +109,8 @@ export default function NewsPage() {
   return (
     <div className="space-y-16 pb-24">
       <PageHeader
-        badge="Press & Announcements"
         title="News & Media Stories"
         subtitle="Official press releases, corporate developments, culinary milestones, and media publications from Marinozz Group."
-        breadcrumb={[{ label: "News & Media" }]}
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
@@ -52,8 +121,9 @@ export default function NewsPage() {
             {categories.map((cat) => (
               <button
                 key={cat}
+                type="button"
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-3 py-1.5 text-xs font-semibold rounded-lg transition-all ${
+                className={`px-3.5 py-1.5 text-xs font-bold rounded-xl transition-all ${
                   selectedCategory === cat
                     ? "bg-[#0b3674] text-white shadow-xs"
                     : "bg-gray-50 text-gray-600 hover:bg-gray-100"
@@ -68,7 +138,7 @@ export default function NewsPage() {
           <div className="relative w-full sm:w-72">
             <Search className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
             <input
-              type="text"
+              type="search"
               placeholder="Search press releases..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
@@ -80,13 +150,16 @@ export default function NewsPage() {
         {/* Articles Grid */}
         {filtered.length === 0 ? (
           <div className="bg-white p-12 rounded-2xl border border-gray-200 text-center space-y-3">
-            <p className="text-sm font-semibold text-gray-700">No stories found matching your filter.</p>
+            <p className="text-sm font-semibold text-gray-700">
+              No stories found matching your filter.
+            </p>
             <button
+              type="button"
               onClick={() => {
                 setSelectedCategory("All");
                 setSearchQuery("");
               }}
-              className="text-xs font-semibold text-[#c71b27] hover:underline"
+              className="text-xs font-bold text-[#c71b27] hover:underline"
             >
               Reset Filters
             </button>
@@ -96,15 +169,16 @@ export default function NewsPage() {
             {filtered.map((art) => (
               <article
                 key={art.id}
-                className="bg-white rounded-3xl border border-gray-200/80 shadow-sm hover:shadow-md transition-shadow overflow-hidden flex flex-col justify-between"
+                onClick={() => openStoryModal(art)}
+                className="group cursor-pointer bg-white rounded-3xl border border-gray-200/80 shadow-sm hover:shadow-xl hover:border-blue-200 transition-all overflow-hidden flex flex-col justify-between"
               >
                 <div>
-                  <div className="relative aspect-[16/10] w-full bg-gray-100">
+                  <div className="relative aspect-[16/10] w-full bg-gray-100 overflow-hidden">
                     <Image
                       src={art.featuredImage}
                       alt={art.title}
                       fill
-                      className="object-cover"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <span className="absolute top-3 left-3 px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider bg-white/95 text-[#0b3674] shadow-xs">
                       {art.category}
@@ -124,7 +198,7 @@ export default function NewsPage() {
                       </span>
                     </div>
 
-                    <h3 className="text-lg font-bold text-gray-900 line-clamp-2 hover:text-[#0b3674] transition-colors leading-snug">
+                    <h3 className="text-lg font-extrabold text-gray-900 line-clamp-2 group-hover:text-[#0b3674] transition-colors leading-snug">
                       {art.title}
                     </h3>
 
@@ -136,13 +210,10 @@ export default function NewsPage() {
 
                 <div className="px-6 pb-6 pt-3 border-t border-gray-50 flex items-center justify-between text-xs">
                   <span className="text-gray-400 font-medium">{art.author}</span>
-                  <button
-                    onClick={() => setActiveArticle(art)}
-                    className="font-bold text-[#0b3674] hover:text-[#c71b27] flex items-center gap-1 transition-colors"
-                  >
+                  <span className="font-bold text-[#0b3674] group-hover:text-[#c71b27] flex items-center gap-1 transition-colors">
                     <span>Read Full Story</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                  </span>
                 </div>
               </article>
             ))}
@@ -156,22 +227,22 @@ export default function NewsPage() {
               Media Relations Desk
             </span>
             <h4 className="text-lg font-bold text-gray-900">
-              Journalists, Broadcasters & Food Critics
+              Journalists, Broadcasters &amp; Food Critics
             </h4>
             <p className="text-xs text-gray-600">
               For high-resolution brand assets, executive interviews, or tasting invites, contact our media team.
             </p>
           </div>
-          <div className="flex gap-3">
+          <div className="flex flex-wrap gap-3">
             <a
               href="tel:+8801335149006"
-              className="px-4 py-2 text-xs font-semibold rounded-lg bg-[#0b3674] text-white hover:bg-[#072147] transition-colors whitespace-nowrap"
+              className="px-4 py-2.5 text-xs font-bold rounded-xl bg-[#0b3674] text-white hover:bg-[#072147] transition-colors whitespace-nowrap"
             >
               Call Press Desk: +880 1335-149006
             </a>
             <Link
               href="/admin"
-              className="px-4 py-2 text-xs font-semibold rounded-lg bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 transition-colors whitespace-nowrap"
+              className="px-4 py-2.5 text-xs font-bold rounded-xl bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 transition-colors whitespace-nowrap"
             >
               Manage Stories (Admin)
             </Link>
@@ -179,13 +250,20 @@ export default function NewsPage() {
         </div>
       </div>
 
-      {/* Article Reader Modal */}
-      {activeArticle && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-in fade-in duration-200">
-          <div className="bg-white rounded-3xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-10 relative">
+      {/* Native Article Reader Modal Dialog */}
+      <dialog
+        ref={dialogRef}
+        {...({ closedby: "any" } as any)}
+        aria-labelledby="story-modal-title"
+        onClose={() => setActiveArticle(null)}
+        className="m-auto w-full max-w-3xl rounded-3xl bg-white p-0 shadow-2xl border border-gray-200 text-gray-900"
+      >
+        {activeArticle && (
+          <div className="max-h-[88vh] overflow-y-auto p-6 sm:p-10 relative">
             <button
-              onClick={() => setActiveArticle(null)}
-              className="absolute top-6 right-6 p-2 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 transition-colors"
+              type="button"
+              onClick={closeStoryModal}
+              className="sticky top-0 float-right p-2 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-600 transition-colors z-10"
               aria-label="Close story modal"
             >
               <X className="w-5 h-5" />
@@ -196,11 +274,14 @@ export default function NewsPage() {
                 {activeArticle.category}
               </span>
 
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0b3674] tracking-tight leading-tight">
+              <h2
+                id="story-modal-title"
+                className="text-2xl sm:text-3xl font-extrabold text-[#0b3674] tracking-tight leading-tight"
+              >
                 {activeArticle.title}
               </h2>
 
-              <div className="flex items-center gap-4 text-xs text-gray-400 pb-4 border-b border-gray-100">
+              <div className="flex flex-wrap items-center gap-3 text-xs text-gray-400 pb-4 border-b border-gray-100">
                 <span>Published on {activeArticle.date}</span>
                 <span>•</span>
                 <span>{activeArticle.readTime}</span>
@@ -223,19 +304,50 @@ export default function NewsPage() {
                 ))}
               </div>
 
-              <div className="pt-6 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500">
-                <span>Marinozz Group Corporate Communications</span>
+              <div className="pt-6 border-t border-gray-100 flex flex-wrap items-center justify-between gap-3 text-xs text-gray-500">
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => handleCopyShare(activeArticle)}
+                    className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold transition-colors"
+                  >
+                    {copiedId === activeArticle.id ? (
+                      <>
+                        <Check className="w-3.5 h-3.5 text-emerald-600" />
+                        <span className="text-emerald-700">Link Copied!</span>
+                      </>
+                    ) : (
+                      <>
+                        <Share2 className="w-3.5 h-3.5" />
+                        <span>Copy Story Link</span>
+                      </>
+                    )}
+                  </button>
+                  <a
+                    href={`https://wa.me/8801335149006?text=${encodeURIComponent(
+                      `Hello Marinozz Group, I just read "${activeArticle.title}" and would like to learn more.`
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 font-semibold transition-colors"
+                  >
+                    <MessageCircle className="w-3.5 h-3.5 text-emerald-600" />
+                    <span>Inquire via WhatsApp</span>
+                  </a>
+                </div>
+
                 <button
-                  onClick={() => setActiveArticle(null)}
-                  className="px-4 py-2 font-semibold rounded-lg bg-[#0b3674] text-white hover:bg-[#072147]"
+                  type="button"
+                  onClick={closeStoryModal}
+                  className="px-5 py-2 font-bold rounded-xl bg-[#0b3674] text-white hover:bg-[#072147]"
                 >
                   Close Story
                 </button>
               </div>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </dialog>
     </div>
   );
 }
